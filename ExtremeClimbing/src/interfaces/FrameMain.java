@@ -24,6 +24,9 @@ public class FrameMain extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JDesktopPane();
+        jToolBar2 = new javax.swing.JToolBar();
+        panelRendimiento = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuEntrenamiento = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -41,16 +44,52 @@ public class FrameMain extends javax.swing.JFrame {
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
 
+        jToolBar2.setBackground(new java.awt.Color(153, 153, 153));
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        panelRendimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tu rendimiento ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 51, 153))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 90)); // NOI18N
+        jLabel2.setText("0");
+
+        javax.swing.GroupLayout panelRendimientoLayout = new javax.swing.GroupLayout(panelRendimiento);
+        panelRendimiento.setLayout(panelRendimientoLayout);
+        panelRendimientoLayout.setHorizontalGroup(
+            panelRendimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRendimientoLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        panelRendimientoLayout.setVerticalGroup(
+            panelRendimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRendimientoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(473, Short.MAX_VALUE)
+                .addComponent(panelRendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelRendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        panel.setLayer(jToolBar2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panel.setLayer(panelRendimiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         menuEntrenamiento.setText("Entrenamiento");
         menuEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -157,16 +196,19 @@ public class FrameMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenu menuEntrenamiento;
     private javax.swing.JMenu menuItinerarios;
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuResumenes;
     private javax.swing.JDesktopPane panel;
+    private javax.swing.JPanel panelRendimiento;
     // End of variables declaration//GEN-END:variables
 }
