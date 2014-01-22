@@ -16,7 +16,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         etDescripcion = new javax.swing.JLabel();
         etTipo = new javax.swing.JLabel();
         tipoEntrenamiento = new javax.swing.JComboBox();
-        jPanel1 = new javax.swing.JPanel();
+        panelFechas = new javax.swing.JPanel();
         etFechas1 = new javax.swing.JLabel();
         fechaDel1 = new com.toedter.calendar.JDateChooser();
         etAl1 = new javax.swing.JLabel();
@@ -24,12 +24,12 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         panelTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        barraMenu = new javax.swing.JMenuBar();
+        menuArchivo = new javax.swing.JMenu();
+        menuNuevo = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenu();
+        menuBorrar = new javax.swing.JMenuItem();
+        menuModificar = new javax.swing.JMenuItem();
 
         setClosable(true);
         setIconifiable(true);
@@ -63,11 +63,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         fechaHasta1.setForeground(new java.awt.Color(0, 51, 102));
         fechaHasta1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelFechasLayout = new javax.swing.GroupLayout(panelFechas);
+        panelFechas.setLayout(panelFechasLayout);
+        panelFechasLayout.setHorizontalGroup(
+            panelFechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFechasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(etFechas1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -78,11 +78,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                 .addComponent(fechaHasta1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelFechasLayout.setVerticalGroup(
+            panelFechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFechasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etFechas1)
                     .addComponent(fechaHasta1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etAl1)
@@ -108,9 +108,9 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                         .addComponent(inputBuscar)
                         .addContainerGap())
                     .addGroup(panelBusquedasLayout.createSequentialGroup()
-                        .addComponent(tipoEntrenamiento, 0, 120, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(tipoEntrenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panelBusquedasLayout.setVerticalGroup(
             panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +126,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                             .addComponent(tipoEntrenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelBusquedasLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,7 +151,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTablaLayout.setVerticalGroup(
@@ -162,29 +162,29 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Archivo");
-        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuArchivo.setText("Archivo");
+        menuArchivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem1.setText("Nuevo");
-        jMenu1.add(jMenuItem1);
+        menuNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuNuevo.setText("Nuevo");
+        menuArchivo.add(menuNuevo);
 
-        jMenuBar1.add(jMenu1);
+        barraMenu.add(menuArchivo);
 
-        jMenu2.setText("Editar");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuEditar.setText("Editar");
+        menuEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem2.setText("Borrar");
-        jMenu2.add(jMenuItem2);
+        menuBorrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuBorrar.setText("Borrar");
+        menuEditar.add(menuBorrar);
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem3.setText("Modificar");
-        jMenu2.add(jMenuItem3);
+        menuModificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuModificar.setText("Modificar");
+        menuEditar.add(menuModificar);
 
-        jMenuBar1.add(jMenu2);
+        barraMenu.add(menuEditar);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,6 +212,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JLabel etAl1;
     private javax.swing.JLabel etDescripcion;
     private javax.swing.JLabel etFechas1;
@@ -219,16 +220,15 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser fechaDel1;
     private com.toedter.calendar.JDateChooser fechaHasta1;
     private javax.swing.JTextField inputBuscar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenuItem menuBorrar;
+    private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenuItem menuModificar;
+    private javax.swing.JMenuItem menuNuevo;
     private javax.swing.JPanel panelBusquedas;
+    private javax.swing.JPanel panelFechas;
     private javax.swing.JPanel panelTabla;
     private javax.swing.JComboBox tipoEntrenamiento;
     // End of variables declaration//GEN-END:variables
