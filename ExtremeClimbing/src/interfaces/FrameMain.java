@@ -9,6 +9,7 @@ import javax.help.HelpSet;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
+import tools.Util;
 
 /**
  *
@@ -16,10 +17,11 @@ import javax.swing.UIManager;
  */
 public class FrameMain extends javax.swing.JFrame {
 
-  
+    private Util tools = new Util();
     
     public FrameMain() {
         initComponents();
+        tools.conectarBaseDatos();
         iniciarAyuda();//revisar
         setLocationRelativeTo(null);
     }
