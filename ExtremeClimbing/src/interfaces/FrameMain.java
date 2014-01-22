@@ -146,7 +146,7 @@ public class FrameMain extends javax.swing.JFrame {
 
     private void menuConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaEntrenamientosActionPerformed
         cerrarDialogosAbiertos();
-        IFrameSesiones iFrameSesiones = new IFrameSesiones();
+        IFrameSesiones iFrameSesiones = new IFrameSesiones(panel);
         panel.add(iFrameSesiones);
         iFrameSesiones.setVisible(true);
     }//GEN-LAST:event_menuConsultaEntrenamientosActionPerformed

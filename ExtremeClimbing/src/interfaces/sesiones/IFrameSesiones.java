@@ -1,10 +1,15 @@
 package interfaces.sesiones;
 
+import javax.swing.JDesktopPane;
+
 public class IFrameSesiones extends javax.swing.JInternalFrame {
 
-
-    public IFrameSesiones() {
+    private JDesktopPane panel;
+    
+    public IFrameSesiones(JDesktopPane panel) {
         initComponents();
+        this.panel = panel;
+        this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,10 +22,12 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         etTipo = new javax.swing.JLabel();
         tipoEntrenamiento = new javax.swing.JComboBox();
         panelFechas = new javax.swing.JPanel();
-        etFechas1 = new javax.swing.JLabel();
-        fechaDel1 = new com.toedter.calendar.JDateChooser();
-        etAl1 = new javax.swing.JLabel();
-        fechaHasta1 = new com.toedter.calendar.JDateChooser();
+        etFechas = new javax.swing.JLabel();
+        fechaDel = new com.toedter.calendar.JDateChooser();
+        etAl = new javax.swing.JLabel();
+        fechaHasta = new com.toedter.calendar.JDateChooser();
+        btBuscar = new javax.swing.JButton();
+        btLimpiar = new javax.swing.JButton();
         panelTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -51,17 +58,17 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         tipoEntrenamiento.setForeground(new java.awt.Color(0, 51, 102));
         tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Físico", "Rocódromo", "Roca" }));
 
-        etFechas1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        etFechas1.setText("Fechas del");
+        etFechas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etFechas.setText("Fechas del");
 
-        fechaDel1.setForeground(new java.awt.Color(0, 51, 102));
-        fechaDel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        fechaDel.setForeground(new java.awt.Color(0, 51, 102));
+        fechaDel.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
-        etAl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        etAl1.setText("al");
+        etAl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etAl.setText("al");
 
-        fechaHasta1.setForeground(new java.awt.Color(0, 51, 102));
-        fechaHasta1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        fechaHasta.setForeground(new java.awt.Color(0, 51, 102));
+        fechaHasta.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         javax.swing.GroupLayout panelFechasLayout = new javax.swing.GroupLayout(panelFechas);
         panelFechas.setLayout(panelFechasLayout);
@@ -69,13 +76,13 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             panelFechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFechasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etFechas1)
+                .addComponent(etFechas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fechaDel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etAl1)
+                .addComponent(etAl)
                 .addGap(8, 8, 8)
-                .addComponent(fechaHasta1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelFechasLayout.setVerticalGroup(
@@ -83,12 +90,23 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             .addGroup(panelFechasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etFechas1)
-                    .addComponent(fechaHasta1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etAl1)
-                    .addComponent(fechaDel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(etFechas)
+                    .addComponent(fechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etAl)
+                    .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        btBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btBuscar.setText("BUSCAR");
+
+        btLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btLimpiar.setText("Limpiar");
+        btLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBusquedasLayout = new javax.swing.GroupLayout(panelBusquedas);
         panelBusquedas.setLayout(panelBusquedasLayout);
@@ -98,19 +116,26 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBusquedasLayout.createSequentialGroup()
-                        .addComponent(etDescripcion)
-                        .addGap(22, 22, 22))
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBusquedasLayout.createSequentialGroup()
+                                .addComponent(etDescripcion)
+                                .addGap(22, 22, 22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedasLayout.createSequentialGroup()
+                                .addComponent(etTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBusquedasLayout.createSequentialGroup()
+                                .addComponent(inputBuscar)
+                                .addContainerGap())
+                            .addGroup(panelBusquedasLayout.createSequentialGroup()
+                                .addComponent(tipoEntrenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedasLayout.createSequentialGroup()
-                        .addComponent(etTipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBusquedasLayout.createSequentialGroup()
-                        .addComponent(inputBuscar)
-                        .addContainerGap())
-                    .addGroup(panelBusquedasLayout.createSequentialGroup()
-                        .addComponent(tipoEntrenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBuscar)
+                        .addContainerGap())))
         );
         panelBusquedasLayout.setVerticalGroup(
             panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +152,10 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                     .addGroup(panelBusquedasLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btBuscar)
+                    .addComponent(btLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,14 +180,14 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -201,8 +230,8 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -210,15 +239,25 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        inputBuscar.setText("");
+        tipoEntrenamiento.setSelectedIndex(0);
+        fechaDel.setDate(null);
+        fechaHasta.setDate(null);
+    }//GEN-LAST:event_btLimpiarActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JLabel etAl1;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btLimpiar;
+    private javax.swing.JLabel etAl;
     private javax.swing.JLabel etDescripcion;
-    private javax.swing.JLabel etFechas1;
+    private javax.swing.JLabel etFechas;
     private javax.swing.JLabel etTipo;
-    private com.toedter.calendar.JDateChooser fechaDel1;
-    private com.toedter.calendar.JDateChooser fechaHasta1;
+    private com.toedter.calendar.JDateChooser fechaDel;
+    private com.toedter.calendar.JDateChooser fechaHasta;
     private javax.swing.JTextField inputBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
