@@ -58,7 +58,9 @@ public class FrameMain extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addGap(0, 470, Short.MAX_VALUE)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +147,8 @@ public class FrameMain extends javax.swing.JFrame {
     private void menuConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaEntrenamientosActionPerformed
         cerrarDialogosAbiertos();
         IFrameSesiones iFrameSesiones = new IFrameSesiones();
-        
+        panel.add(iFrameSesiones);
+        iFrameSesiones.setVisible(true);
     }//GEN-LAST:event_menuConsultaEntrenamientosActionPerformed
 
     /**
