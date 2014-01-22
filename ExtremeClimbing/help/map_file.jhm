@@ -1,0 +1,5 @@
+<map version="1.0">
+	<mapID target="indice" url="html/tab_content.html" />
+	<mapID target="pasoalta1" url="html/alta_partida1.html" />
+	<mapID target="pasoalta2" url="html/alta_partida2.html" />
+</map>
