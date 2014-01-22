@@ -7,8 +7,7 @@ import java.sql.SQLException;
 public class Util {
     
     private Connection conexion;
-            
-    
+             
     public boolean conectarBaseDatos(){
         boolean correcto = true;
         try {
