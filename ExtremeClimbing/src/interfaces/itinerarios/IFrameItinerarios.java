@@ -28,21 +28,175 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBusquedas = new javax.swing.JPanel();
+        inputBuscar = new javax.swing.JTextField();
+        etNombre = new javax.swing.JLabel();
+        etTipo = new javax.swing.JLabel();
+        tipoEntrenamiento = new javax.swing.JComboBox();
+        btBuscar = new javax.swing.JButton();
+        btLimpiar = new javax.swing.JButton();
+        etFechas = new javax.swing.JLabel();
+        fechaDel = new com.toedter.calendar.JDateChooser();
+        etAl = new javax.swing.JLabel();
+        fechaHasta = new com.toedter.calendar.JDateChooser();
+        etLocalizacion = new javax.swing.JLabel();
+        inputBuscar1 = new javax.swing.JTextField();
+
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Consultar Itinerario");
+        setToolTipText("");
+
+        panelBusquedas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Búsqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 153))); // NOI18N
+
+        inputBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        inputBuscar.setForeground(new java.awt.Color(0, 51, 102));
+
+        etNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etNombre.setText("Nombre : ");
+
+        etTipo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etTipo.setText("Tipo :");
+
+        tipoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tipoEntrenamiento.setForeground(new java.awt.Color(0, 51, 102));
+        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Físico", "Rocódromo", "Roca" }));
+
+        btBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btBuscar.setText("BUSCAR");
+
+        btLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btLimpiar.setText("Limpiar");
+        btLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarActionPerformed(evt);
+            }
+        });
+
+        etFechas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etFechas.setText("Fechas del");
+
+        fechaDel.setForeground(new java.awt.Color(0, 51, 102));
+        fechaDel.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+
+        etAl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etAl.setText("al");
+
+        fechaHasta.setForeground(new java.awt.Color(0, 51, 102));
+        fechaHasta.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+
+        etLocalizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etLocalizacion.setText("Localización : ");
+
+        inputBuscar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        inputBuscar1.setForeground(new java.awt.Color(0, 51, 102));
+
+        javax.swing.GroupLayout panelBusquedasLayout = new javax.swing.GroupLayout(panelBusquedas);
+        panelBusquedas.setLayout(panelBusquedasLayout);
+        panelBusquedasLayout.setHorizontalGroup(
+            panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBusquedasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBusquedasLayout.createSequentialGroup()
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etNombre)
+                            .addComponent(etLocalizacion))
+                        .addGap(28, 28, 28)
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputBuscar)
+                            .addComponent(inputBuscar1))
+                        .addContainerGap())
+                    .addGroup(panelBusquedasLayout.createSequentialGroup()
+                        .addComponent(btLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBuscar)
+                        .addContainerGap())
+                    .addGroup(panelBusquedasLayout.createSequentialGroup()
+                        .addComponent(etTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tipoEntrenamiento, 0, 115, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(etFechas)
+                        .addGap(18, 18, 18)
+                        .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(etAl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))))
+        );
+        panelBusquedasLayout.setVerticalGroup(
+            panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBusquedasLayout.createSequentialGroup()
+                .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBusquedasLayout.createSequentialGroup()
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etNombre))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etLocalizacion)
+                            .addComponent(inputBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etTipo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tipoEntrenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(etFechas))
+                            .addComponent(etAl, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fechaHasta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelBusquedasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36)
+                .addGroup(panelBusquedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLimpiar)
+                    .addComponent(btBuscar))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelBusquedas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        inputBuscar.setText("");
+        tipoEntrenamiento.setSelectedIndex(0);
+        fechaDel.setDate(null);
+        fechaHasta.setDate(null);
+    }//GEN-LAST:event_btLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btLimpiar;
+    private javax.swing.JLabel etAl;
+    private javax.swing.JLabel etFechas;
+    private javax.swing.JLabel etLocalizacion;
+    private javax.swing.JLabel etNombre;
+    private javax.swing.JLabel etTipo;
+    private com.toedter.calendar.JDateChooser fechaDel;
+    private com.toedter.calendar.JDateChooser fechaHasta;
+    private javax.swing.JTextField inputBuscar;
+    private javax.swing.JTextField inputBuscar1;
+    private javax.swing.JPanel panelBusquedas;
+    private javax.swing.JComboBox tipoEntrenamiento;
     // End of variables declaration//GEN-END:variables
 }
