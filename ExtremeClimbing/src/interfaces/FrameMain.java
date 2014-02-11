@@ -3,11 +3,7 @@ package interfaces;
 import classes.FondoMain;
 import interfaces.itinerarios.IFrameNewItinerario;
 import interfaces.sesiones.IFrameSesiones;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -45,7 +41,6 @@ public class FrameMain extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JDesktopPane();
-        jToolBar2 = new javax.swing.JToolBar();
         BotonFondo1 = new javax.swing.JButton();
         BotonFondo2 = new javax.swing.JButton();
         BotonFondo3 = new javax.swing.JButton();
@@ -68,10 +63,6 @@ public class FrameMain extends javax.swing.JFrame {
         setTitle("Extreme Climbing");
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
-
-        jToolBar2.setBackground(new java.awt.Color(153, 153, 153));
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
 
         BotonFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo1.jpg"))); // NOI18N
         BotonFondo1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,20 +97,17 @@ public class FrameMain extends javax.swing.JFrame {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addGap(0, 470, Short.MAX_VALUE)
+                .addGap(0, 508, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(BotonFondo3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonFondo4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(BotonFondo1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonFondo2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(14, 14, 14))))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(BotonFondo3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonFondo4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(BotonFondo1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonFondo2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,10 +120,8 @@ public class FrameMain extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonFondo3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonFondo4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
-        panel.setLayer(jToolBar2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel.setLayer(BotonFondo1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel.setLayer(BotonFondo2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel.setLayer(BotonFondo3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -339,7 +325,6 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JButton BotonFondo4;
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenuItem menuConsultaEntrenamientos;
     private javax.swing.JMenuItem menuConsultaItinerarios;
