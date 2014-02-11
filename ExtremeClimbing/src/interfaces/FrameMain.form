@@ -92,7 +92,7 @@
         <Menu class="javax.swing.JMenu" name="menuPerfil">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/perfil.jpeg"/>
+              <Image iconType="3" name="/images/perfil.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Perfil"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -113,7 +113,7 @@
         <Menu class="javax.swing.JMenu" name="menuAyuda">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/interrogacion3.png"/>
+              <Image iconType="3" name="/images/ayuda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="?"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

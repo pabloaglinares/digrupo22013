@@ -189,7 +189,7 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuResumenes);
 
-        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/perfil.jpeg"))); // NOI18N
+        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/perfil.png"))); // NOI18N
         menuPerfil.setText("Perfil");
         menuPerfil.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -199,7 +199,7 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuPerfil);
 
-        menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogacion3.png"))); // NOI18N
+        menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ayuda.png"))); // NOI18N
         menuAyuda.setText("?");
         menuAyuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
