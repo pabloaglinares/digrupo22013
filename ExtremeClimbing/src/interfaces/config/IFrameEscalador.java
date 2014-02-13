@@ -172,7 +172,7 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
 
-       
+       this.setVisible(false);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_aceptarActionPerformed
