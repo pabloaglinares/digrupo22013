@@ -7,7 +7,22 @@ import java.util.ArrayList;
 
 public class Util {
     
+    private static Util tools;
     private Connection conexion;
+    private ArrayList<String> dificultades = new ArrayList<>();
+    
+    
+    private Util(){
+    }
+    
+    public static Util getInsUtil(){
+        if (tools == null){
+            tools = new Util();
+            //startDificultades();
+        }
+        return tools;
+    }
+    
              
     /**
      * Metodo para conectarse a la base de datos.
@@ -23,13 +38,20 @@ public class Util {
         }
         return correcto;
     }
+
+    private void startDificultades(){
+        
+    }
+    
     
     /**
-     * 
+     * Metodo para devolver las dificultados.
      */
-    public ArrayList<String> devolverDificultades(){
-        ArrayList<String> listado;
-        return null;
+    public ArrayList<String> getDificultades() {
+        return dificultades;
     }
+
+    
+    
     
 }

@@ -22,7 +22,7 @@ import tools.Util;
  */
 public class FrameMain extends javax.swing.JFrame {
 
-    private Util tools = new Util();
+    private Util tools = Util.getInsUtil();
 
     public FrameMain() {
         initComponents();
