@@ -257,6 +257,7 @@ public class FrameMain extends javax.swing.JFrame {
 
         IFrameEscalador iFrameEscalador = new IFrameEscalador(panel);
         panel.add(iFrameEscalador);
+        iFrameEscalador.setVisible(true);
     }//GEN-LAST:event_menuEscaladorActionPerformed
 
     /**
