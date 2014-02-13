@@ -6,11 +6,14 @@
 
 package interfaces.config;
 
+import javax.swing.JDesktopPane;
+
 /**
  *
  * @author USUARIO
  */
 public class IFrameEscalador extends javax.swing.JInternalFrame {
+    private JDesktopPane panel;
 
     /**
      * Creates new form IFrameEscalador
@@ -19,6 +22,12 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
         initComponents();
         enableOff();
         
+    }
+
+    public IFrameEscalador(JDesktopPane panel) {
+        initComponents();
+        this.panel = panel;
+        this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
     }
 
     /**

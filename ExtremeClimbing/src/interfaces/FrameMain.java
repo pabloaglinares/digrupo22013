@@ -1,6 +1,7 @@
 package interfaces;
 
 import classes.FondoMain;
+import interfaces.config.IFrameEscalador;
 import interfaces.itinerarios.IFrameNewItinerario;
 import interfaces.sesiones.IFrameSesiones;
 import java.awt.Component;
@@ -180,6 +181,11 @@ public class FrameMain extends javax.swing.JFrame {
 
         menuEscalador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuEscalador.setText("Escalador");
+        menuEscalador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEscaladorActionPerformed(evt);
+            }
+        });
         menuPerfil.add(menuEscalador);
 
         barraMenu.add(menuPerfil);
@@ -246,6 +252,12 @@ public class FrameMain extends javax.swing.JFrame {
         iFrameNewItinerario.setVisible(true);
         
     }//GEN-LAST:event_menuNuevoItinerarioActionPerformed
+
+    private void menuEscaladorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEscaladorActionPerformed
+
+        IFrameEscalador iFrameEscalador = new IFrameEscalador(panel);
+        panel.add(iFrameEscalador);
+    }//GEN-LAST:event_menuEscaladorActionPerformed
 
     /**
      * Método para iniciar la ayuda.
