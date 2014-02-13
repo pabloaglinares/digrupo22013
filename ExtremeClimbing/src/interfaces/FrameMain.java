@@ -26,14 +26,13 @@ public class FrameMain extends javax.swing.JFrame {
 
     public FrameMain() {
         initComponents();
-        //tools.conectarBaseDatos();
+        if(tools.conectarBaseDatos())System.out.println("conectado");;
         iniciarAyuda();//revisar
         setLocationRelativeTo(null);
 
         // Pone icono en el Jmenu
         URL url = getClass().getClassLoader().getResource("images/logotipo.png");
         setIconImage(new ImageIcon(url).getImage());
-
     }
 
     @SuppressWarnings("unchecked")
