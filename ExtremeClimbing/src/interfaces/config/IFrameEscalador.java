@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaces.config;
+
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -12,13 +13,21 @@ package interfaces.config;
  */
 public class IFrameEscalador extends javax.swing.JInternalFrame {
 
+    private JDesktopPane panel;
+
     /**
      * Creates new form IFrameEscalador
      */
     public IFrameEscalador() {
         initComponents();
         enableOff();
-        
+
+    }
+
+    public IFrameEscalador(JDesktopPane panel) {
+        initComponents();
+        this.panel = panel;
+        this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
     }
 
     /**
@@ -52,6 +61,10 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Apellidos:");
 
+        fecha1.setEnabled(false);
+
+        fecha2.setEnabled(false);
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Desde:");
 
@@ -68,7 +81,16 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
 
         aceptar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aceptar.setText("Aceptar");
+        aceptar.setEnabled(false);
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
 
+        name.setEditable(false);
+
+        apellido.setEditable(false);
         apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 apellidoActionPerformed(evt);
@@ -143,10 +165,17 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
 
-        enableOn();      
+        enableOn();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_modificarActionPerformed
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+
+       this.setVisible(false);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,24 +191,21 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
     private javax.swing.JTextField name;
     // End of variables declaration//GEN-END:variables
 
-private void enableOff(){
+    private void enableOff() {
         aceptar.setEnabled(false);
         fecha1.setEnabled(false);
         fecha2.setEnabled(false);
         name.setEnabled(false);
         apellido.setEnabled(false);
-}
-private void enableOn(){
+    }
+
+    private void enableOn() {
         aceptar.setEnabled(true);
         fecha1.setEnabled(true);
         fecha2.setEnabled(true);
-        name.setEnabled(true);
-        apellido.setEnabled(true);
-    
-}
+        name.setEditable(true);
+        apellido.setEditable(true);
 
-
-
-
+    }
 
 }
