@@ -179,6 +179,7 @@ public class FrameMain extends javax.swing.JFrame {
         menuResumenes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuResumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/print2.png"))); // NOI18N
         menuResumen.setText("Rendimiento");
         menuResumenes.add(menuResumen);
 
@@ -203,7 +204,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         menuAyuda.setBackground(new java.awt.Color(255, 255, 255));
         menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help2.png"))); // NOI18N
-        menuAyuda.setText("?");
         menuAyuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         ayuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
