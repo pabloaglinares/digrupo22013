@@ -15,7 +15,6 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Nueva Sesión de Entrenamiento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

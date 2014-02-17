@@ -1,6 +1,8 @@
 package interfaces.sesiones;
 
+import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.table.DefaultTableModel;
 
 public class IFrameSesiones extends javax.swing.JInternalFrame {
 
@@ -9,8 +11,36 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     public IFrameSesiones(JDesktopPane panel) {
         initComponents();
         this.panel = panel;
+        fijarAnchoColumnas();
         this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
     }
+    
+    //Metodo para fijar el ancho de sa columnas y la altura de las filas
+    private void fijarAnchoColumnas() {
+        int[] anchos = {200, 150, 150, 350, 700};
+        for (int i = 0; i < tabla.getColumnCount(); i++) {
+            tabla.getColumnModel().getColumn(i).setMaxWidth(anchos[i]);
+        }
+        tabla.setRowHeight(30);
+    }
+    
+    /*public void rellenarTabla() {
+        if (tools.contarRegistros("ps_customer") > 0) {
+            this.registrosEncontrados.setText("   " + tools.contarRegistros("ps_customer") + " registros encontrados");
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
+        while (tabla.getRowCount() > 0) {
+            ((DefaultTableModel) tabla.getModel()).removeRow(0);
+        }
+        List<Cliente> lista = tools.pedirClientes();
+        for (int i = 0; i < lista.size(); i++) {
+            Object[] fila = {lista.get(i).getCodigo(),
+                lista.get(i).getNombre(), lista.get(i).getApellidos(),
+                lista.get(i).getCorreo()};
+            modeloTabla.addRow(fila);
+        }
+        tabla.setModel(modeloTabla);
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,8 +59,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         btBuscar = new javax.swing.JButton();
         btLimpiar = new javax.swing.JButton();
         panelTabla = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrolltabla = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        btNuevo = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
+        btSalir = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         menuNuevo = new javax.swing.JMenuItem();
@@ -40,7 +73,6 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Gestión de Entrenamientos");
 
         panelBusquedas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Búsqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 153))); // NOI18N
@@ -98,6 +130,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         );
 
         btBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btBuscar.setForeground(new java.awt.Color(0, 153, 0));
         btBuscar.setText("BUSCAR");
 
         btLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -128,12 +161,13 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                                 .addComponent(inputBuscar)
                                 .addContainerGap())
                             .addGroup(panelBusquedasLayout.createSequentialGroup()
-                                .addComponent(tipoEntrenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tipoEntrenamiento, 0, 209, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btBuscar)
                         .addContainerGap())))
         );
@@ -161,18 +195,26 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         panelTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrenamientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 102))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scrolltabla.setViewportView(tabla);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
         panelTabla.setLayout(panelTablaLayout);
@@ -180,16 +222,22 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(scrolltabla, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addComponent(scrolltabla, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        btNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new2.png"))); // NOI18N
+
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close1.png"))); // NOI18N
+
+        btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
 
         menuArchivo.setText("Archivo");
         menuArchivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -223,7 +271,13 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBusquedas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelBusquedas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btSalir)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -232,7 +286,12 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(panelBusquedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -251,7 +310,10 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btLimpiar;
+    private javax.swing.JButton btNuevo;
+    private javax.swing.JButton btSalir;
     private javax.swing.JLabel etAl;
     private javax.swing.JLabel etDescripcion;
     private javax.swing.JLabel etFechas;
@@ -259,8 +321,6 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser fechaDel;
     private com.toedter.calendar.JDateChooser fechaHasta;
     private javax.swing.JTextField inputBuscar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenuItem menuBorrar;
     private javax.swing.JMenu menuEditar;
@@ -269,6 +329,8 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelBusquedas;
     private javax.swing.JPanel panelFechas;
     private javax.swing.JPanel panelTabla;
+    private javax.swing.JScrollPane scrolltabla;
+    private javax.swing.JTable tabla;
     private javax.swing.JComboBox tipoEntrenamiento;
     // End of variables declaration//GEN-END:variables
 }

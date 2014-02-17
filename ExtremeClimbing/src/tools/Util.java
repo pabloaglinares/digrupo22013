@@ -2,7 +2,9 @@ package tools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Util {
@@ -51,7 +53,34 @@ public class Util {
         return dificultades;
     }
 
+    //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
+    public int contarRegistros(String nombreTabla) {
+        int numeroRegistros = 0;
+        String consulta = "SELECT count(*) FROM " + nombreTabla;
+        if (conexion != null) {
+            try {
+                Statement sentencia = conexion.createStatement();
+                ResultSet result = sentencia.executeQuery(consulta);
+                while (result.next()) {
+                    numeroRegistros = result.getInt(1);
+                }
+            } catch (SQLException ex) {
+                System.err.println("Se ha producido un error SQL.\n"
+                        + "Probablemente se haya perdido la conexión con la BBDD.");
+            }
+        };
+        return numeroRegistros;
+    }
     
+    public void cerrarConexion() {
+        try {
+            if (conexion != null) {
+                conexion.close();
+            }
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error cerrando la conexion.");
+        }
+    }
     
     
 }
