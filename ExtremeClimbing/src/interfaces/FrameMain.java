@@ -127,15 +127,20 @@ public class FrameMain extends javax.swing.JFrame {
         panel.setLayer(BotonFondo3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel.setLayer(BotonFondo4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        menuEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/entrenamiento.png"))); // NOI18N
+        barraMenu.setBackground(new java.awt.Color(255, 255, 255));
+
+        menuEntrenamiento.setBackground(new java.awt.Color(255, 255, 255));
+        menuEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mosqu.png"))); // NOI18N
         menuEntrenamiento.setText("Entrenamiento");
         menuEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuNuevoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuNuevoEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new2.png"))); // NOI18N
         menuNuevoEntrenamiento.setText("Nueva sesión");
         menuEntrenamiento.add(menuNuevoEntrenamiento);
 
         menuConsultaEntrenamientos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuConsultaEntrenamientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clock.png"))); // NOI18N
         menuConsultaEntrenamientos.setText("Consultar sesiones");
         menuConsultaEntrenamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,11 +151,13 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuEntrenamiento);
 
-        menuItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/itinerario.jpg"))); // NOI18N
+        menuItinerarios.setBackground(new java.awt.Color(255, 255, 255));
+        menuItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rut.png"))); // NOI18N
         menuItinerarios.setText("Itinerarios");
         menuItinerarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuNuevoItinerario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuNuevoItinerario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new2.png"))); // NOI18N
         menuNuevoItinerario.setText("Nuevo itinerario");
         menuNuevoItinerario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,12 +167,14 @@ public class FrameMain extends javax.swing.JFrame {
         menuItinerarios.add(menuNuevoItinerario);
 
         menuConsultaItinerarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuConsultaItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clock.png"))); // NOI18N
         menuConsultaItinerarios.setText("Consultar itinerarios");
         menuItinerarios.add(menuConsultaItinerarios);
 
         barraMenu.add(menuItinerarios);
 
-        menuResumenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/resumenes.png"))); // NOI18N
+        menuResumenes.setBackground(new java.awt.Color(255, 255, 255));
+        menuResumenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/utils.png"))); // NOI18N
         menuResumenes.setText("Resúmenes");
         menuResumenes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -175,11 +184,13 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuResumenes);
 
-        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/perfil.png"))); // NOI18N
+        menuPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         menuPerfil.setText("Perfil");
         menuPerfil.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuEscalador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menuEscalador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/itinerari.png"))); // NOI18N
         menuEscalador.setText("Escalador");
         menuEscalador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,11 +201,13 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuPerfil);
 
-        menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ayuda.png"))); // NOI18N
+        menuAyuda.setBackground(new java.awt.Color(255, 255, 255));
+        menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help2.png"))); // NOI18N
         menuAyuda.setText("?");
         menuAyuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         ayuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help3.png"))); // NOI18N
         ayuda.setText("Ayúdame");
         menuAyuda.add(ayuda);
 
