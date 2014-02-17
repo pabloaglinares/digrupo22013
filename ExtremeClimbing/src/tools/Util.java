@@ -1,5 +1,6 @@
 package tools;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,9 +34,11 @@ public class Util {
     public boolean conectarBaseDatos(){
         boolean correcto = true;
         try {
-            Class.forName("org.hsqldb.jdbcDriver");
-            conexion = DriverManager.getConnection("jdbc:hsqldb:hsql:database", "sa", "");
-        } catch (ClassNotFoundException | SQLException ex) {
+            Class.forName("com.hxtt.sql.dbf.DBFDriver").newInstance();
+            String url = "jdbc:DBF://./database";
+            conexion = DriverManager.getConnection(url, "", "");
+        } catch (Exception ex) {
+            ex.printStackTrace();
             correcto = false;
         }
         return correcto;
