@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class IFrameNewItinerario extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "*.jpg", "*.gif", "*.jpeg");
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif", "jpeg");
     private String rutaImagen;
 
     /**

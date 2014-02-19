@@ -1,11 +1,19 @@
 package interfaces.sesiones;
 
+import classes.Sesion;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import tools.Util;
 
 
 public class IFrameNewSesion extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
+    private Util tools = Util.getInsUtil();
    
     public IFrameNewSesion() {
         initComponents();
@@ -26,16 +34,16 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         tipoEntrenamiento = new javax.swing.JComboBox();
         etTipo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textDescripcion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        fechaDel = new com.toedter.calendar.JDateChooser();
+        selectFecha = new com.toedter.calendar.JDateChooser();
         etFechas = new javax.swing.JLabel();
         etFechas1 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        horasHI = new javax.swing.JSpinner();
+        minutosHI = new javax.swing.JSpinner();
         etFechas2 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        horasHF = new javax.swing.JSpinner();
+        minutosHF = new javax.swing.JSpinner();
         etFechas3 = new javax.swing.JLabel();
         etFechas4 = new javax.swing.JLabel();
         btSalir = new javax.swing.JButton();
@@ -57,14 +65,14 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         etTipo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etTipo.setText("Tipo de sesión");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textDescripcion.setColumns(20);
+        textDescripcion.setRows(5);
+        jScrollPane1.setViewportView(textDescripcion);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        fechaDel.setForeground(new java.awt.Color(0, 51, 102));
-        fechaDel.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        selectFecha.setForeground(new java.awt.Color(0, 51, 102));
+        selectFecha.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         etFechas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas.setText("Fecha");
@@ -72,16 +80,16 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         etFechas1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas1.setText("Hora inicio");
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        horasHI.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jSpinner2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        minutosHI.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         etFechas2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas2.setText("Hora fin");
 
-        jSpinner3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        horasHF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jSpinner4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        minutosHF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         etFechas3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas3.setText(":");
@@ -99,23 +107,23 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(etFechas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(selectFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(etFechas1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(horasHI, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(etFechas3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(minutosHI, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(etFechas2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(horasHF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(etFechas4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(minutosHF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,23 +132,20 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etFechas))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etFechas1)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etFechas3)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etFechas2)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etFechas4))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(etFechas1)
+                        .addComponent(horasHI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(etFechas3)
+                        .addComponent(minutosHI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(etFechas2)
+                        .addComponent(horasHF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(minutosHF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(etFechas4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -186,6 +191,11 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         });
 
         btGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save2.png"))); // NOI18N
+        btGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,6 +230,26 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btSalirActionPerformed
 
+    private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        try {
+            Sesion sesion = new Sesion();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            Date fecha = selectFecha.getDate();
+            String horaInicio = horasHI.getValue().toString()+":"+minutosHI.getValue().toString();
+            Date hInicio = sdf.parse(horaInicio);
+            String horaFin = horasHF.getValue().toString()+":"+minutosHF.getValue().toString();
+            Date hFin = sdf.parse(horaFin);
+            sesion.setDescripcion(textDescripcion.getText());
+            sesion.setFecha(fecha);
+            sesion.setHoraInicio(hInicio);
+            sesion.setHoraFin(hFin);
+            sesion.setTipoSesion(tipoEntrenamiento.getSelectedItem().toString());
+            tools.insertSesionEntrenamiento(sesion);            
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btGuardar;
@@ -231,15 +261,15 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel etFechas3;
     private javax.swing.JLabel etFechas4;
     private javax.swing.JLabel etTipo;
-    private com.toedter.calendar.JDateChooser fechaDel;
+    private javax.swing.JSpinner horasHF;
+    private javax.swing.JSpinner horasHI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSpinner minutosHF;
+    private javax.swing.JSpinner minutosHI;
+    private com.toedter.calendar.JDateChooser selectFecha;
+    private javax.swing.JTextArea textDescripcion;
     private javax.swing.JComboBox tipoEntrenamiento;
     // End of variables declaration//GEN-END:variables
 }

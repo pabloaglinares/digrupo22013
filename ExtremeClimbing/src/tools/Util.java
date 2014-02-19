@@ -1,11 +1,15 @@
 package tools;
 
+import classes.Sesion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Util {
     
@@ -48,6 +52,9 @@ public class Util {
     }
     
     
+    
+    
+    
     /**
      * Metodo para devolver las dificultados.
      */
@@ -73,6 +80,25 @@ public class Util {
         };
         return numeroRegistros;
     }
+    
+    public boolean insertSesionEntrenamiento(Sesion sesion){
+        try {
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
+            String consulta = "INSERT INTO SESIONES (FECHA) VALUES"
+                    + "("+sdfDate.format(sesion.getFecha())+")";
+            Statement st = conexion.createStatement();
+            st.executeUpdate(consulta);
+                        
+            //, HORAINICIO, HORAFIN, TIPO, DESCRIPCIO
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    
     
     public void obtenerSesiones(){
         
