@@ -8,7 +8,6 @@ package interfaces.config;
 import javax.swing.JDesktopPane;
 
 /**
- *
  * @author USUARIO
  */
 public class IFrameEscalador extends javax.swing.JInternalFrame {

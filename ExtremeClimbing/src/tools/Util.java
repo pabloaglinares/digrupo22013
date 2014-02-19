@@ -74,6 +74,12 @@ public class Util {
         return numeroRegistros;
     }
     
+    public void obtenerSesiones(){
+        
+        
+    }
+    
+    
     public void cerrarConexion() {
         try {
             if (conexion != null) {

@@ -1,6 +1,5 @@
 package interfaces;
 
-import classes.FondoMain;
 import interfaces.config.IFrameEscalador;
 import interfaces.itinerarios.IFrameNewItinerario;
 import interfaces.sesiones.IFrameSesiones;

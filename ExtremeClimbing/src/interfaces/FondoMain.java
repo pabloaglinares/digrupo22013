@@ -2,7 +2,7 @@
  * Clase para poner un fondo en el JDesktopPane del Main
  */
 
-package classes;
+package interfaces;
 
 import java.awt.Component;
 import java.awt.Graphics;
