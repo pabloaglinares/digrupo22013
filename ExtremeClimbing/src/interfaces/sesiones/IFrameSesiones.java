@@ -15,7 +15,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     
     //Metodo para fijar el ancho de sa columnas y la altura de las filas
     private void fijarAnchoColumnas() {
-        int[] anchos = {200, 150, 150, 350, 700};
+        int[] anchos = {50, 200, 150, 150, 350, 700};
         for (int i = 0; i < tabla.getColumnCount(); i++) {
             tabla.getColumnModel().getColumn(i).setMaxWidth(anchos[i]);
         }
@@ -193,25 +193,29 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         panelTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrenamientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 102))); // NOI18N
 
+        tabla.setBackground(new java.awt.Color(255, 255, 153));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
+                "COD", "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tabla.setGridColor(new java.awt.Color(204, 153, 0));
+        tabla.setSelectionBackground(new java.awt.Color(255, 204, 0));
+        tabla.setSelectionForeground(new java.awt.Color(240, 240, 240));
         scrolltabla.setViewportView(tabla);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
