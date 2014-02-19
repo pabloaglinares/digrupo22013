@@ -236,6 +236,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close1.png"))); // NOI18N
 
         btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         menuArchivo.setText("Archivo");
         menuArchivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -302,6 +307,10 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         fechaDel.setDate(null);
         fechaHasta.setDate(null);
     }//GEN-LAST:event_btLimpiarActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btSalirActionPerformed
 
     
 

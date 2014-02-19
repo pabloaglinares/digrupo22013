@@ -179,6 +179,11 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         );
 
         btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         btGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save2.png"))); // NOI18N
 
@@ -210,6 +215,10 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

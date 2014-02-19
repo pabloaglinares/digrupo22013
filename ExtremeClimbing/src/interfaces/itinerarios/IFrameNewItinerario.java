@@ -212,6 +212,11 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         btGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save2.png"))); // NOI18N
 
         btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,6 +283,10 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         JDImg dialog = new JDImg(null, true, ruta);
         dialog.setVisible(true);
     }//GEN-LAST:event_BotonImgActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
