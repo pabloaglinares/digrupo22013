@@ -1,7 +1,9 @@
 package interfaces;
 
 import interfaces.config.IFrameEscalador;
+import interfaces.itinerarios.IFrameItinerarios;
 import interfaces.itinerarios.IFrameNewItinerario;
+import interfaces.sesiones.IFrameNewSesion;
 import interfaces.sesiones.IFrameSesiones;
 import java.awt.Component;
 import java.awt.Image;
@@ -29,7 +31,7 @@ public class FrameMain extends javax.swing.JFrame {
         if(tools.conectarBaseDatos())System.out.println("conectado");;
         iniciarAyuda();//revisar
         setLocationRelativeTo(null);
-
+        panel.setBorder(new FondoMain("1"));
         // Pone icono en el Jmenu
         URL url = getClass().getClassLoader().getResource("images/app-icon.png");
         setIconImage(new ImageIcon(url).getImage());
@@ -136,6 +138,11 @@ public class FrameMain extends javax.swing.JFrame {
         menuNuevoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuNuevoEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new2.png"))); // NOI18N
         menuNuevoEntrenamiento.setText("Nueva sesión");
+        menuNuevoEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoEntrenamientoActionPerformed(evt);
+            }
+        });
         menuEntrenamiento.add(menuNuevoEntrenamiento);
 
         menuConsultaEntrenamientos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -168,6 +175,11 @@ public class FrameMain extends javax.swing.JFrame {
         menuConsultaItinerarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuConsultaItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clock.png"))); // NOI18N
         menuConsultaItinerarios.setText("Consultar itinerarios");
+        menuConsultaItinerarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaItinerariosActionPerformed(evt);
+            }
+        });
         menuItinerarios.add(menuConsultaItinerarios);
 
         barraMenu.add(menuItinerarios);
@@ -266,11 +278,25 @@ public class FrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuNuevoItinerarioActionPerformed
 
     private void menuEscaladorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEscaladorActionPerformed
-
+        cerrarDialogosAbiertos();
         IFrameEscalador iFrameEscalador = new IFrameEscalador(panel);
         panel.add(iFrameEscalador);
         iFrameEscalador.setVisible(true);
     }//GEN-LAST:event_menuEscaladorActionPerformed
+
+    private void menuNuevoEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoEntrenamientoActionPerformed
+        cerrarDialogosAbiertos();
+        IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
+        panel.add(iFrameNewSesion);
+        iFrameNewSesion.setVisible(true); 
+    }//GEN-LAST:event_menuNuevoEntrenamientoActionPerformed
+
+    private void menuConsultaItinerariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaItinerariosActionPerformed
+        cerrarDialogosAbiertos();
+        IFrameItinerarios iFrameItinerarios = new IFrameItinerarios(panel);
+        panel.add(iFrameItinerarios);
+        iFrameItinerarios.setVisible(true);
+    }//GEN-LAST:event_menuConsultaItinerariosActionPerformed
 
     /**
      * Método para iniciar la ayuda.

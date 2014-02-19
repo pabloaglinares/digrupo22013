@@ -1,8 +1,6 @@
 package interfaces.sesiones;
 
-import java.util.List;
 import javax.swing.JDesktopPane;
-import javax.swing.table.DefaultTableModel;
 
 public class IFrameSesiones extends javax.swing.JInternalFrame {
 
