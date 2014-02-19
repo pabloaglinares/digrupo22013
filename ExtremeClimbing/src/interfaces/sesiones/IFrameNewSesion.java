@@ -4,17 +4,14 @@ import classes.Sesion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import tools.Util;
-
 
 public class IFrameNewSesion extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
     private Util tools = Util.getInsUtil();
-   
+
     public IFrameNewSesion() {
         initComponents();
     }
@@ -24,7 +21,7 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         this.panel = panel;
         this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
     }
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -235,16 +232,16 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
             Sesion sesion = new Sesion();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
             Date fecha = selectFecha.getDate();
-            String horaInicio = horasHI.getValue().toString()+":"+minutosHI.getValue().toString();
+            String horaInicio = horasHI.getValue().toString() + ":" + minutosHI.getValue().toString();
             Date hInicio = sdf.parse(horaInicio);
-            String horaFin = horasHF.getValue().toString()+":"+minutosHF.getValue().toString();
+            String horaFin = horasHF.getValue().toString() + ":" + minutosHF.getValue().toString();
             Date hFin = sdf.parse(horaFin);
             sesion.setDescripcion(textDescripcion.getText());
             sesion.setFecha(fecha);
             sesion.setHoraInicio(hInicio);
             sesion.setHoraFin(hFin);
             sesion.setTipoSesion(tipoEntrenamiento.getSelectedItem().toString());
-            tools.insertSesionEntrenamiento(sesion);            
+            tools.insertSesionEntrenamiento(sesion);
         } catch (ParseException ex) {
             ex.printStackTrace();
         }

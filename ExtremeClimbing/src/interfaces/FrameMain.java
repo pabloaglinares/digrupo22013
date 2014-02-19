@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.ImageIcon;
@@ -31,7 +32,7 @@ public class FrameMain extends javax.swing.JFrame {
         if(tools.conectarBaseDatos())System.out.println("conectado");;
         iniciarAyuda();//revisar
         setLocationRelativeTo(null);
-        panel.setBorder(new FondoMain("1"));
+        ponerFondo();
         // Pone icono en el Jmenu
         URL url = getClass().getClassLoader().getResource("images/app-icon.png");
         setIconImage(new ImageIcon(url).getImage());
@@ -267,6 +268,11 @@ public class FrameMain extends javax.swing.JFrame {
         iFrameSesiones.setVisible(true);
     }//GEN-LAST:event_menuConsultaEntrenamientosActionPerformed
 
+    private void ponerFondo(){
+        Random r = new Random();
+        int numero = r.nextInt(4)+1;
+        panel.setBorder(new FondoMain(String.valueOf(numero)));
+    }
 
     private void BotonFondo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFondo1ActionPerformed
         //poner imagen(fondo1) al jDesktopPane
