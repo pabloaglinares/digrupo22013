@@ -12,29 +12,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Util {
-    
+
     private static Util tools;
     private Connection conexion;
     private ArrayList<String> dificultades = new ArrayList<>();
-    
-    
-    private Util(){
+
+    private Util() {
     }
-    
-    public static Util getInsUtil(){
-        if (tools == null){
+
+    public static Util getInsUtil() {
+        if (tools == null) {
             tools = new Util();
             //startDificultades();
         }
         return tools;
     }
-    
-             
+
     /**
      * Metodo para conectarse a la base de datos.
+     *
      * @return devuelve true si se conecta.
      */
-    public boolean conectarBaseDatos(){
+    public boolean conectarBaseDatos() {
         boolean correcto = true;
         try {
             Class.forName("com.hxtt.sql.dbf.DBFDriver").newInstance();
@@ -47,14 +46,10 @@ public class Util {
         return correcto;
     }
 
-    private void startDificultades(){
-        
+    private void startDificultades() {
+
     }
-    
-    
-    
-    
-    
+
     /**
      * Metodo para devolver las dificultados.
      */
@@ -80,32 +75,28 @@ public class Util {
         };
         return numeroRegistros;
     }
-    
-    public boolean insertSesionEntrenamiento(Sesion sesion){
+
+    public boolean insertSesionEntrenamiento(Sesion sesion) {
+        boolean correcto = true;
         try {
             SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
             String consulta = "INSERT INTO SESIONES (FECHA) VALUES"
-                    + "("+sdfDate.format(sesion.getFecha())+")";
+                    + "('" + sdfDate.format(sesion.getFecha()) + "')";
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);
-                        
+
             //, HORAINICIO, HORAFIN, TIPO, DESCRIPCIO
-            return false;
         } catch (SQLException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            correcto = false;
         }
-        return true;
+        return correcto;
     }
-    
-    
-    
-    public void obtenerSesiones(){
-        
-        
+
+    public void obtenerSesiones() {
+
     }
-    
-    
+
     public void cerrarConexion() {
         try {
             if (conexion != null) {
@@ -115,6 +106,5 @@ public class Util {
             System.err.println("Se ha producido un error cerrando la conexion.");
         }
     }
-    
-    
+
 }
