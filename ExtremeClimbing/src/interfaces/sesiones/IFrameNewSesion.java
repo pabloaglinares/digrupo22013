@@ -78,15 +78,19 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         etFechas1.setText("Hora inicio");
 
         horasHI.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        horasHI.setModel(new javax.swing.SpinnerListModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 
         minutosHI.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        minutosHI.setModel(new javax.swing.SpinnerListModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 
         etFechas2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas2.setText("Hora fin");
 
         horasHF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        horasHF.setModel(new javax.swing.SpinnerListModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 
         minutosHF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        minutosHF.setModel(new javax.swing.SpinnerListModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 
         etFechas3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas3.setText(":");
