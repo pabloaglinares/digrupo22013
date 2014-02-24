@@ -232,14 +232,14 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        Sesion sesion = new Sesion();
         try {
-            Sesion sesion = new Sesion();
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
             Date fecha = selectFecha.getDate();
             String horaInicio = horasHI.getValue().toString() + ":" + minutosHI.getValue().toString();
-            Date hInicio = sdf.parse(horaInicio);
+            Date hInicio = sdfHora.parse(horaInicio);
             String horaFin = horasHF.getValue().toString() + ":" + minutosHF.getValue().toString();
-            Date hFin = sdf.parse(horaFin);
+            Date hFin = sdfHora.parse(horaFin);
             sesion.setDescripcion(textDescripcion.getText());
             sesion.setFecha(fecha);
             sesion.setHoraInicio(hInicio);

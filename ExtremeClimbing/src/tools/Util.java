@@ -78,39 +78,42 @@ public class Util {
     }
 
     public boolean insertSesionEntrenamiento(Sesion sesion) {
+        int registros = contarRegistros("SESIONES");
+        registros++;
+        int escalador = 1;
         boolean correcto = true;
         try {
             SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
-            String consulta = "INSERT INTO SESIONES (FECHA) VALUES"
-                    + "('" + sdfDate.format(sesion.getFecha()) + "')";
+            String consulta = "INSERT INTO SESIONES (P_SESION, A_ESCALADO, FECHA, "
+                    + "HORAINICIO, HORAFIN, TIPO, DESCRIPCIO) VALUES "
+                    + "("+registros+","+escalador+","
+                    + "'" + sdfDate.format(sesion.getFecha())+"','"+sdfHour.format(sesion.getHoraInicio())+"','"+
+                    sdfHour.format(sesion.getHoraFin())+
+                    "','"+sesion.getTipoSesion()+"','"+
+                    sesion.getDescripcion()+"')";
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);
-
-            //, HORAINICIO, HORAFIN, TIPO, DESCRIPCIO
         } catch (SQLException ex) {
+            ex.printStackTrace();
             correcto = false;
         }
         return correcto;
     }
     
-    public boolean insertItinerario(Itinerario itinerario){
-        
-        try {
-            
+    public boolean insertItinerario(Itinerario itinerario){    
+        boolean correcto = true;
+        try {        
             String consulta = "INSERT INTO ITINERARIOS (nombre,localizacion,tipo,dificultad,fecha,fotografia) VALUES"
                     +itinerario.getNombre()+itinerario.getLocalizacion()+itinerario.getTipo()
-                    +itinerario.getDificultad()+itinerario.getFecha()+itinerario.getFotografia();
-            
+                    +itinerario.getDificultad()+itinerario.getFecha()+itinerario.getFotografia(); 
             Statement st = conexion.createStatement();
-            st.executeUpdate(consulta);
-                        
-            
-            return false;
+            st.executeUpdate(consulta);  
         } catch (SQLException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            correcto = false;
+            ex.printStackTrace();
         }
-        return true;
+        return correcto;
     }
     
     

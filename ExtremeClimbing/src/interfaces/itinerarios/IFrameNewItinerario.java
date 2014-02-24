@@ -38,7 +38,6 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         rutaImagen = "";
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,7 +49,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         inputNombre = new javax.swing.JTextField();
         inputLocalizacion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btSelectPicture = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         BotonImg = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -84,11 +83,11 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Difícultad");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btSelectPicture.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btSelectPicture.setText("Seleccionar");
+        btSelectPicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btSelectPictureActionPerformed(evt);
             }
         });
 
@@ -158,7 +157,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))
+                                        .addComponent(btSelectPicture)))
                                 .addGap(10, 10, 10)
                                 .addComponent(BotonImg, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -207,7 +206,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jButton1))
+                            .addComponent(btSelectPicture))
                         .addGap(106, 106, 106)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -257,7 +256,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btSelectPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelectPictureActionPerformed
         //Creamos un objeto de JFileChooser
         JFileChooser dlg = new JFileChooser();
         //Del objeto creado vamos a llamar al metodo setFileFilter
@@ -284,12 +283,12 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
             jLabel6.setText(file);
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btSelectPictureActionPerformed
 
     private void BotonImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonImgActionPerformed
-       //Obtener la direccion donde se guarda la imagen
-          String ruta=jLabel6.getText();  
-          
+        //Obtener la direccion donde se guarda la imagen
+        String ruta = jLabel6.getText();
+
         JDImg dialog = new JDImg(null, true, ruta);
         dialog.setVisible(true);
     }//GEN-LAST:event_BotonImgActionPerformed
@@ -299,21 +298,14 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        // TODO add your handling code here:
-        
-            Itinerario itinerario = new Itinerario();
-
-            Date fecha = fechaDel.getDate();
-            itinerario.setNombre(inputNombre.getText());
-            itinerario.setLocalizacion(inputLocalizacion.getText());
-            itinerario.setTipo(tipoEntrenamiento.getSelectedItem().toString());
-            itinerario.setDificultad(tipoEntrenamiento1.getSelectedItem().toString());
-            itinerario.setFotografia(new File(itinerario.getFotografia().getAbsolutePath()));
-            
-            tools.insertItinerario(itinerario);
-        
-        
-        
+        Itinerario itinerario = new Itinerario();
+        Date fecha = fechaDel.getDate();
+        itinerario.setNombre(inputNombre.getText());
+        itinerario.setLocalizacion(inputLocalizacion.getText());
+        itinerario.setTipo(tipoEntrenamiento.getSelectedItem().toString());
+        itinerario.setDificultad(tipoEntrenamiento1.getSelectedItem().toString());
+        itinerario.setFotografia(new File(itinerario.getFotografia().getAbsolutePath()));
+        tools.insertItinerario(itinerario);
     }//GEN-LAST:event_btGuardarActionPerformed
 
 
@@ -321,13 +313,13 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private javax.swing.JButton BotonImg;
     private javax.swing.JButton btGuardar;
     private javax.swing.JButton btSalir;
+    private javax.swing.JButton btSelectPicture;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel etLocalizacion;
     private javax.swing.JLabel etNombre;
     private com.toedter.calendar.JDateChooser fechaDel;
     private javax.swing.JTextField inputLocalizacion;
     private javax.swing.JTextField inputNombre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

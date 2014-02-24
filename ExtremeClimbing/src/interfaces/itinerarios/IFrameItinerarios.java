@@ -209,6 +209,7 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrolltabla.setViewportView(tabla);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);

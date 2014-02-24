@@ -216,6 +216,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         tabla.setGridColor(new java.awt.Color(204, 153, 0));
         tabla.setSelectionBackground(new java.awt.Color(255, 204, 0));
         tabla.setSelectionForeground(new java.awt.Color(240, 240, 240));
+        tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrolltabla.setViewportView(tabla);
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
