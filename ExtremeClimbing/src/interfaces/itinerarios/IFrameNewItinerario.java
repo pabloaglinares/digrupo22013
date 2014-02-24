@@ -5,13 +5,17 @@
  */
 package interfaces.itinerarios;
 
+import classes.Itinerario;
 import java.awt.Frame;
 import java.awt.Image;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import tools.Util;
 
 /**
  *
@@ -22,6 +26,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private JDesktopPane panel;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif", "jpeg");
     private String rutaImagen;
+    private Util tools = Util.getInsUtil();
 
     /**
      * Creates new form IFrameNewSesion
@@ -210,6 +215,11 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
 
         btGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save2.png"))); // NOI18N
+        btGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardarActionPerformed(evt);
+            }
+        });
 
         btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
         btSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -287,6 +297,24 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btSalirActionPerformed
+
+    private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        // TODO add your handling code here:
+        
+            Itinerario itinerario = new Itinerario();
+
+            Date fecha = fechaDel.getDate();
+            itinerario.setNombre(inputNombre.getText());
+            itinerario.setLocalizacion(inputLocalizacion.getText());
+            itinerario.setTipo(tipoEntrenamiento.getSelectedItem().toString());
+            itinerario.setDificultad(tipoEntrenamiento1.getSelectedItem().toString());
+            itinerario.setFotografia(new File(itinerario.getFotografia().getAbsolutePath()));
+            
+            tools.insertItinerario(itinerario);
+        
+        
+        
+    }//GEN-LAST:event_btGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

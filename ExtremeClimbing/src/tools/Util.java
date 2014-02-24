@@ -1,5 +1,6 @@
 package tools;
 
+import classes.Itinerario;
 import classes.Sesion;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -92,9 +93,30 @@ public class Util {
         }
         return correcto;
     }
-
-    public void obtenerSesiones() {
-
+    
+    public boolean insertItinerario(Itinerario itinerario){
+        
+        try {
+            
+            String consulta = "INSERT INTO ITINERARIOS (nombre,localizacion,tipo,dificultad,fecha,fotografia) VALUES"
+                    +itinerario.getNombre()+itinerario.getLocalizacion()+itinerario.getTipo()
+                    +itinerario.getDificultad()+itinerario.getFecha()+itinerario.getFotografia();
+            
+            Statement st = conexion.createStatement();
+            st.executeUpdate(consulta);
+                        
+            
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    
+    public void obtenerSesiones(){
+        
+        
     }
 
     public void cerrarConexion() {
