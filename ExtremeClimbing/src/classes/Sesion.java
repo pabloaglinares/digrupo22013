@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Sesion {
     
+    private int codigo;
+    private int escalador;
     private Date fecha;
     private Date horaInicio;
     private Date horaFin;
@@ -13,7 +15,9 @@ public class Sesion {
     public Sesion() {
     }
 
-    public Sesion(Date fecha, Date horaInicio, Date horaFin, String tipoSesion, String descripcion) {
+    public Sesion(int codigo, int escalador, Date fecha, Date horaInicio, Date horaFin, String tipoSesion, String descripcion) {
+        this.codigo=codigo;
+        this.escalador=escalador;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -60,5 +64,24 @@ public class Sesion {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getEscalador() {
+        return escalador;
+    }
+
+    public void setEscalador(int escalador) {
+        this.escalador = escalador;
+    }
+    
+    
+    
     
 }

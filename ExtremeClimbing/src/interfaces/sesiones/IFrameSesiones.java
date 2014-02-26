@@ -1,44 +1,57 @@
 package interfaces.sesiones;
 
+import classes.Sesion;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.table.DefaultTableModel;
+import tools.Util;
 
 public class IFrameSesiones extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
-    
+    private Util tools = Util.getInsUtil();
+
     public IFrameSesiones(JDesktopPane panel) {
         initComponents();
         this.panel = panel;
         fijarAnchoColumnas();
-        this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
+        rellenarTabla();
+        this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
     }
-    
+
     //Metodo para fijar el ancho de sa columnas y la altura de las filas
     private void fijarAnchoColumnas() {
-        int[] anchos = {50, 200, 150, 150, 350, 700};
+        int[] anchos = {50, 50, 200, 150, 150, 350, 700};
         for (int i = 0; i < tabla.getColumnCount(); i++) {
             tabla.getColumnModel().getColumn(i).setMaxWidth(anchos[i]);
         }
         tabla.setRowHeight(30);
     }
-    
-    /*public void rellenarTabla() {
-        if (tools.contarRegistros("ps_customer") > 0) {
-            this.registrosEncontrados.setText("   " + tools.contarRegistros("ps_customer") + " registros encontrados");
-        }
+
+    public void rellenarTabla() {
+//        if (tools.contarRegistros("ps_customer") > 0) {
+//            this.registrosEncontrados.setText("   " + tools.contarRegistros("ps_customer") + " registros encontrados");
+//        }
         DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
         while (tabla.getRowCount() > 0) {
             ((DefaultTableModel) tabla.getModel()).removeRow(0);
         }
-        List<Cliente> lista = tools.pedirClientes();
+        List<Sesion> lista = tools.devolverSesiones();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < lista.size(); i++) {
+            String fecha = sdfDate.format(lista.get(i).getFecha());
+            String horaInicio = sdfHour.format(lista.get(i).getHoraInicio());
+            String horaFin = sdfHour.format(lista.get(i).getHoraFin());
             Object[] fila = {lista.get(i).getCodigo(),
-                lista.get(i).getNombre(), lista.get(i).getApellidos(),
-                lista.get(i).getCorreo()};
+                lista.get(i).getEscalador(), fecha,
+                horaInicio, horaFin, lista.get(i).getTipoSesion(),
+                lista.get(i).getDescripcion()};
             modeloTabla.addRow(fila);
         }
         tabla.setModel(modeloTabla);
-    }*/
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -193,31 +206,39 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         panelTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrenamientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 102))); // NOI18N
 
-        tabla.setBackground(new java.awt.Color(255, 255, 153));
+        tabla.setBackground(new java.awt.Color(254, 254, 254));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "COD", "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
+                "COD", "ESCALADOR", "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabla.setGridColor(new java.awt.Color(204, 153, 0));
-        tabla.setSelectionBackground(new java.awt.Color(255, 204, 0));
-        tabla.setSelectionForeground(new java.awt.Color(240, 240, 240));
+        tabla.setGridColor(new java.awt.Color(1, 1, 1));
+        tabla.setSelectionBackground(new java.awt.Color(255, 241, 184));
+        tabla.setSelectionForeground(new java.awt.Color(1, 1, 1));
         tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrolltabla.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(1).setResizable(false);
+            tabla.getColumnModel().getColumn(2).setResizable(false);
+            tabla.getColumnModel().getColumn(3).setResizable(false);
+            tabla.getColumnModel().getColumn(4).setResizable(false);
+            tabla.getColumnModel().getColumn(5).setResizable(false);
+            tabla.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
         panelTabla.setLayout(panelTablaLayout);
@@ -317,7 +338,6 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btSalirActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;

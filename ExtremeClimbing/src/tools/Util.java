@@ -7,8 +7,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,6 +60,33 @@ public class Util {
         return dificultades;
     }
 
+    public List<Sesion> devolverSesiones() {
+        List<Sesion> sesiones = new ArrayList<>();
+        try {
+            String consulta = "SELECT * FROM SESIONES";
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
+            Statement sentencia = conexion.createStatement();
+            ResultSet result = sentencia.executeQuery(consulta);
+            while (result.next()) {
+               Sesion sesion = new Sesion();
+               sesion.setCodigo(result.getInt(1));
+               sesion.setEscalador(result.getInt(2));
+               sesion.setFecha(result.getDate(3));
+               sesion.setHoraInicio(sdfHour.parse(result.getString(4)));
+               sesion.setHoraFin(sdfHour.parse(result.getString(5)));
+               sesion.setTipoSesion(result.getString(6));
+               sesion.setDescripcion(result.getString(7));
+               sesiones.add(sesion);
+            }          
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        return sesiones;
+    }
+
     //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
     public int contarRegistros(String nombreTabla) {
         int numeroRegistros = 0;
@@ -87,11 +116,11 @@ public class Util {
             SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
             String consulta = "INSERT INTO SESIONES (P_SESION, A_ESCALADO, FECHA, "
                     + "HORAINICIO, HORAFIN, TIPO, DESCRIPCIO) VALUES "
-                    + "("+registros+","+escalador+","
-                    + "'" + sdfDate.format(sesion.getFecha())+"','"+sdfHour.format(sesion.getHoraInicio())+"','"+
-                    sdfHour.format(sesion.getHoraFin())+
-                    "','"+sesion.getTipoSesion()+"','"+
-                    sesion.getDescripcion()+"')";
+                    + "(" + registros + "," + escalador + ","
+                    + "'" + sdfDate.format(sesion.getFecha()) + "','" + sdfHour.format(sesion.getHoraInicio()) + "','"
+                    + sdfHour.format(sesion.getHoraFin())
+                    + "','" + sesion.getTipoSesion() + "','"
+                    + sesion.getDescripcion() + "')";
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);
         } catch (SQLException ex) {
@@ -100,26 +129,26 @@ public class Util {
         }
         return correcto;
     }
-    
-    public boolean insertItinerario(Itinerario itinerario){    
+
+    public boolean insertItinerario(Itinerario itinerario) {
         boolean correcto = true;
-        try {        
-            String consulta = "INSERT INTO ITINERARIOS (nombre,localizacion,tipo,dificultad,fecha,fotografia) VALUES"
-                    +itinerario.getNombre()+itinerario.getLocalizacion()+itinerario.getTipo()
-                    +itinerario.getDificultad()+itinerario.getFecha()+itinerario.getFotografia(); 
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            String consulta = "INSERT INTO ITINERARIOS (NOMBRE,localizacion,tipo,dificultad,fecha,fotografia) VALUES ('"
+                    + itinerario.getNombre() + "','" + itinerario.getLocalizacion() + "','" + itinerario.getTipo()
+                    + "','" + itinerario.getDificultad() + "','" + sdfDate.format(itinerario.getFecha()) + "','"
+                    + itinerario.getFotografia().getAbsolutePath() + "')";
             Statement st = conexion.createStatement();
-            st.executeUpdate(consulta);  
+            st.executeUpdate(consulta);
         } catch (SQLException ex) {
             correcto = false;
             ex.printStackTrace();
         }
         return correcto;
     }
-    
-    
-    public void obtenerSesiones(){
-        
-        
+
+    public void obtenerSesiones() {
+
     }
 
     public void cerrarConexion() {
