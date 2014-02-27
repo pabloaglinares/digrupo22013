@@ -1,5 +1,9 @@
-<index version="1.0">
-<indexitem text="Practica Ajedrez" target="indice"/>
-<indexitem text="Dar de Alta Una Partida" target="pasoalta1"/>
-<indexitem text="Dar de Alta Movimientos" target="pasoalta2"/>
-</index>
+
+    <index version="1.0">
+        <indexitem text="Bienvenida" target="principal"/>
+        <indexitem text="Alta sesion" target="altaSesion"/>
+        <indexitem text="Consulta sesion" target="consultaSesion"/>
+		<indexitem text="Alta itinerario" target="altaItinerario"/>
+        <indexitem text="Consulta itinerario" target="consultaItinerario"/>
+        <indexitem text="Modificar escalador" target="modificarEscalador"/>
+    </index>

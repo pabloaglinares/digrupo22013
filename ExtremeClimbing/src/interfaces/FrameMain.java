@@ -350,8 +350,8 @@ public class FrameMain extends javax.swing.JFrame {
             HelpBroker hb = helpset.createHelpBroker();
             // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
             // principal y secundaria.
-            hb.enableHelpKey(getRootPane(), "indice", helpset);
-            hb.enableHelpOnButton(ayuda, "indice", helpset);
+            hb.enableHelpKey(getRootPane(), "principal", helpset);
+            hb.enableHelpOnButton(ayuda, "principal", helpset);
         } catch (Exception e) {
             e.printStackTrace();
         }

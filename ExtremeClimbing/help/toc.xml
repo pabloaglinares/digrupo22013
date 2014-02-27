@@ -1,6 +1,10 @@
-<toc version="1.0">
-<tocitem text="Practica Ajedrez" target="indice">
-<tocitem text="Dar de alta" target="pasoalta1"/>
-<tocitem text="Paso 2 Dar de alta" target="pasoalta2"/>
-</tocitem>
-</toc>
+    <toc version="1.0">
+        <tocitem text="Bienvenida" target="principal">
+            <tocitem text="Alta sesion" target="altaSesion"/>
+            <tocitem text="Consulta sesion" target="consultaSesion"/>
+			<tocitem text="Alta itinerario" target="altaItinerario"/>
+            <tocitem text="Consulta itinerario" target="consultaItinerario"/>
+			<tocitem text="Modificar escalador" target="modificarEscalador"/>
+        </tocitem>
+    </toc>
+	

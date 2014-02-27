@@ -16,6 +16,7 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
     private Util tools = Util.getInsUtil();
+
     /**
      * Creates new form IFrameEscalador
      */
@@ -31,15 +32,14 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
         this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
     }
 
-    private void rellenarDatosEscalador(){
+    private void rellenarDatosEscalador() {
         Escalador escalador = tools.devolerEscalador();
-        System.out.println(escalador.getApellidos());
         name.setText(escalador.getNombre());
         apellido.setText(escalador.getApellidos());
         fecha1.setDate(escalador.getFechaInicio());
         fecha2.setDate(escalador.getFechaFin());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -87,11 +87,6 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
 
         apellido.setEditable(false);
         apellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Apellidos");
@@ -160,9 +155,7 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(modificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,16 +177,18 @@ public class IFrameEscalador extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
-
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         enableOn();
     }//GEN-LAST:event_modificarActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-       this.setVisible(false);
+        Escalador escalador = new Escalador();
+        escalador.setNombre(name.getText());
+        escalador.setApellidos(apellido.getText());
+        escalador.setFechaInicio(fecha1.getDate());
+        escalador.setFechaFin(fecha2.getDate());
+        tools.modificarEscalador(escalador);
+        this.setVisible(false);
     }//GEN-LAST:event_aceptarActionPerformed
 
 

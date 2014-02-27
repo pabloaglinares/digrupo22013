@@ -1,5 +1,8 @@
-<map version="1.0">
-	<mapID target="indice" url="html/tab_content.html" />
-	<mapID target="pasoalta1" url="html/alta_partida1.html" />
-	<mapID target="pasoalta2" url="html/alta_partida2.html" />
-</map>
+    <map version="1.0">
+        <mapID target="principal" url="html/principal.html" /> 
+        <mapID target="altaSesion" url="html/altaEntreno.html" />
+        <mapID target="consultaSesion" url="html/consultaSesion.html" />
+		<mapID target="altaItinerario" url="html/altaItinerario.html" /> 
+        <mapID target="consultaItinerario" url="html/consultaItinerario.html" />
+        <mapID target="modificarEscalador" url="html/modificarEscalador.html" />
+    </map>

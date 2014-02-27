@@ -121,6 +121,22 @@ public class Util {
         return escalador;
     }
 
+    public void modificarEscalador(Escalador escalador){
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+            String fechaDesde = sdf.format(escalador.getFechaInicio());
+            String fechaHasta = sdf.format(escalador.getFechaFin());
+            String consulta = "UPDATE ESCALADORES SET NOMBRE='"+
+                    escalador.getNombre()+"',"+"APELLIDOS='"+
+                    escalador.getApellidos()+"', DESDE='"+
+                    fechaDesde+"',HASTA='"+fechaHasta+"'";
+            Statement sentencia = conexion.createStatement();
+            sentencia.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    }
+    
     //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
     public int contarRegistros(String nombreTabla) {
         int numeroRegistros = 0;
@@ -185,6 +201,8 @@ public class Util {
         return correcto;
     }
 
+    
+    
     public void cerrarConexion() {
         try {
             if (conexion != null) {

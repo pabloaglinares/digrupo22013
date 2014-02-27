@@ -1,7 +1,7 @@
 <helpset version="1.0">
- <title>Extreme Climbing</title>
+ <title>Practica AJEDREZ</title>
  <maps>
- <homeID>principal</homeID>
+ <homeID>indice</homeID>
  <mapref location="map_file.jhm"/>
  </maps>
  <view>
