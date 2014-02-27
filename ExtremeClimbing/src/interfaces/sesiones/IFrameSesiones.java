@@ -169,7 +169,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
                                 .addComponent(inputBuscar)
                                 .addContainerGap())
                             .addGroup(panelBusquedasLayout.createSequentialGroup()
-                                .addComponent(tipoEntrenamiento, 0, 209, Short.MAX_VALUE)
+                                .addComponent(tipoEntrenamiento, 0, 252, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelFechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedasLayout.createSequentialGroup()
@@ -204,6 +204,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         panelTabla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrenamientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 51, 102))); // NOI18N
 
         tabla.setBackground(new java.awt.Color(254, 254, 254));
+        tabla.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -243,7 +244,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrolltabla, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+                .addComponent(scrolltabla, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTablaLayout.setVerticalGroup(

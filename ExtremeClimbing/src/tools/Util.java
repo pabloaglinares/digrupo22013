@@ -1,5 +1,6 @@
 package tools;
 
+import classes.Escalador;
 import classes.Itinerario;
 import classes.Sesion;
 import java.sql.Connection;
@@ -11,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Util {
 
@@ -49,7 +52,6 @@ public class Util {
     /**
      * Metodo para devolver las dificultados.
      */
-
     public List<Sesion> devolverSesiones() {
         List<Sesion> sesiones = new ArrayList<>();
         try {
@@ -58,16 +60,16 @@ public class Util {
             Statement sentencia = conexion.createStatement();
             ResultSet result = sentencia.executeQuery(consulta);
             while (result.next()) {
-               Sesion sesion = new Sesion();
-               sesion.setCodigo(result.getInt(1));
-               sesion.setEscalador(result.getInt(2));
-               sesion.setFecha(result.getDate(3));
-               sesion.setHoraInicio(sdfHour.parse(result.getString(4)));
-               sesion.setHoraFin(sdfHour.parse(result.getString(5)));
-               sesion.setTipoSesion(result.getString(6));
-               sesion.setDescripcion(result.getString(7));
-               sesiones.add(sesion);
-            }          
+                Sesion sesion = new Sesion();
+                sesion.setCodigo(result.getInt(1));
+                sesion.setEscalador(result.getInt(2));
+                sesion.setFecha(result.getDate(3));
+                sesion.setHoraInicio(sdfHour.parse(result.getString(4)));
+                sesion.setHoraFin(sdfHour.parse(result.getString(5)));
+                sesion.setTipoSesion(result.getString(6));
+                sesion.setDescripcion(result.getString(7));
+                sesiones.add(sesion);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ParseException ex) {
@@ -75,8 +77,8 @@ public class Util {
         }
         return sesiones;
     }
-    
-    public List<Itinerario> devolverItinerarios(){
+
+    public List<Itinerario> devolverItinerarios() {
         List<Itinerario> itinerarios = new ArrayList<>();
         try {
             String consulta = "SELECT * FROM ITINERARIOS";
@@ -84,21 +86,39 @@ public class Util {
             Statement sentencia = conexion.createStatement();
             ResultSet result = sentencia.executeQuery(consulta);
             while (result.next()) {
-               Itinerario itinerario =  new Itinerario();
-               itinerario.setP_itinerario(result.getInt(1));
-               itinerario.setA_escalador(result.getInt(2));
-               itinerario.setNombre(result.getString(3));
-               itinerario.setLocalizacion(result.getString(4));
-               itinerario.setDificultad(result.getString(5));
-               itinerario.setFecha(result.getDate(6));
-               itinerario.setRutaFotografia(result.getString(7));
-               itinerario.setTipo(result.getString(8));
-               itinerarios.add(itinerario);
-            }          
+                Itinerario itinerario = new Itinerario();
+                itinerario.setP_itinerario(result.getInt(1));
+                itinerario.setA_escalador(result.getInt(2));
+                itinerario.setNombre(result.getString(3));
+                itinerario.setLocalizacion(result.getString(4));
+                itinerario.setDificultad(result.getString(5));
+                itinerario.setFecha(result.getDate(6));
+                itinerario.setRutaFotografia(result.getString(7));
+                itinerario.setTipo(result.getString(8));
+                itinerarios.add(itinerario);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
+        }
         return itinerarios;
+    }
+
+    public Escalador devolerEscalador() {
+        Escalador escalador = new Escalador();
+        try {
+            String consulta = "SELECT * FROM ESCALADORES WHERE P_ESCALADO=1 ";
+            Statement sentencia = conexion.createStatement();
+            ResultSet result = sentencia.executeQuery(consulta);
+            while (result.next()) {
+                escalador.setNombre(result.getString(2));
+                escalador.setApellidos(result.getString(3));
+                escalador.setFechaInicio(result.getDate(4));
+                escalador.setFechaFin(result.getDate(5));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return escalador;
     }
 
     //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
@@ -154,8 +174,8 @@ public class Util {
             String consulta = "INSERT INTO ITINERARIOS (P_ITINERAR,A_ESCALADO,NOMBRE,LOCALIZACI,DIFICULTAD,FECHA, URLFOTOGRA,"
                     + "TIPO) VALUES ("
                     + registros + "," + escalador + ",'" + itinerario.getNombre()
-                    + "','" + itinerario.getLocalizacion()+ "','" + itinerario.getDificultad() + "','"
-                    + sdfDate.format(itinerario.getFecha())+"','"+itinerario.getRutaFotografia()+"','"+itinerario.getTipo()+"')";
+                    + "','" + itinerario.getLocalizacion() + "','" + itinerario.getDificultad() + "','"
+                    + sdfDate.format(itinerario.getFecha()) + "','" + itinerario.getRutaFotografia() + "','" + itinerario.getTipo() + "')";
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);
         } catch (SQLException ex) {
