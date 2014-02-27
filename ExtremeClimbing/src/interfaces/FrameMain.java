@@ -3,6 +3,7 @@ package interfaces;
 import interfaces.config.IFrameEscalador;
 import interfaces.itinerarios.IFrameItinerarios;
 import interfaces.itinerarios.IFrameNewItinerario;
+import interfaces.performance.IFramePerformance;
 import interfaces.sesiones.IFrameNewSesion;
 import interfaces.sesiones.IFrameSesiones;
 import java.awt.Component;
@@ -213,6 +214,11 @@ public class FrameMain extends javax.swing.JFrame {
         menuResumen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/print2.png"))); // NOI18N
         menuResumen.setText("Rendimiento");
+        menuResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuResumenActionPerformed(evt);
+            }
+        });
         menuResumenes.add(menuResumen);
 
         barraMenu.add(menuResumenes);
@@ -323,6 +329,13 @@ public class FrameMain extends javax.swing.JFrame {
         panel.add(iFrameItinerarios);
         iFrameItinerarios.setVisible(true);
     }//GEN-LAST:event_menuConsultaItinerariosActionPerformed
+
+    private void menuResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResumenActionPerformed
+        cerrarDialogosAbiertos();
+        IFramePerformance iFramePerformance = new IFramePerformance(panel);
+        panel.add(iFramePerformance);
+        iFramePerformance.setVisible(true);
+    }//GEN-LAST:event_menuResumenActionPerformed
 
     /**
      * Método para iniciar la ayuda.

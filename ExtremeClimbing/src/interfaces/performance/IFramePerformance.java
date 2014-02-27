@@ -6,15 +6,24 @@
 
 package interfaces.performance;
 
+import javax.swing.JDesktopPane;
+
 /**
  *
  * @author USUARIO
  */
 public class IFramePerformance extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form IFramePerformance
-     */
+    
+    
+    private JDesktopPane panel;
+    
+    public IFramePerformance(JDesktopPane panel) {
+        initComponents();
+        this.panel = panel;
+        this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
+    }
+    
     public IFramePerformance() {
         initComponents();
     }
@@ -28,15 +37,47 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+
+        setTitle("Informes de Rendimiento");
+
+        jPanel1.setLayout(new java.awt.GridLayout(5, 0));
+
+        jButton1.setText("Itinerarios Realizados");
+        jPanel1.add(jButton1);
+
+        jButton2.setText("Entrenamientos Realizados");
+        jPanel1.add(jButton2);
+
+        jButton3.setText("Gráfico entrenamiento Semanal");
+        jPanel1.add(jButton3);
+
+        jButton4.setText("Entrenamientos / Tipo de Entrenamiento");
+        jPanel1.add(jButton4);
+
+        jButton5.setText("Itinerarios / Grados de Dificultad");
+        jPanel1.add(jButton5);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -44,5 +85,11 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
