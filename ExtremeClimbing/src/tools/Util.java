@@ -299,20 +299,28 @@ public class Util {
         }
     }
     
-    public double getNotaRendimiento(){
+    public float getNotaRendimiento(){
         List<Sesion> entrenamientos = devolverEntrenamientos();
         List<Itinerario> itinerarios = devolverItinerarios();
-        
+        float horas = 0;
+        float puntosEntrenamientos;
+        float puntosItinerarios;
         for (int i = 0; i<entrenamientos.size(); i++){
             long horaFin = entrenamientos.get(i).getHoraFin().getTime();
             long horaInicio = entrenamientos.get(i).getHoraInicio().getTime();
-            long is;
-            is = (horaFin - horaInicio);
-            System.out.println(is);
+            horas += (float) (horaFin - horaInicio)/1000/60/60;
+            if (horas > 10) {
+                horas = 10;
+            }
         }
-        
-        
-        return 0;
+        puntosEntrenamientos = (float) (horas*0.5);
+        int numItinerarios = contarRegistros("ITINERARIOS");
+        if (numItinerarios > 20) {
+            numItinerarios = 20;
+        }
+        puntosItinerarios = (float) (numItinerarios*0.25);
+        float nota = (float) puntosEntrenamientos+puntosItinerarios;
+        return nota;
     }
 
     public void cerrarConexion() {

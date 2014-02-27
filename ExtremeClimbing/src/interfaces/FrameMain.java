@@ -30,14 +30,14 @@ public class FrameMain extends javax.swing.JFrame {
 
     public FrameMain() {
         initComponents();
-        if(tools.conectarBaseDatos())System.out.println("conectado");;
+        tools.conectarBaseDatos();
         iniciarAyuda();//revisar
         setLocationRelativeTo(null);
         ponerFondo();
         // Pone icono en el Jmenu
         URL url = getClass().getClassLoader().getResource("images/app-icon.png");
         setIconImage(new ImageIcon(url).getImage());
-        tools.getNotaRendimiento();
+        calcularRendimiento();
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class FrameMain extends javax.swing.JFrame {
         BotonFondo4 = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        notaRendimiento = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuEntrenamiento = new javax.swing.JMenu();
         menuNuevoEntrenamiento = new javax.swing.JMenuItem();
@@ -106,10 +106,10 @@ public class FrameMain extends javax.swing.JFrame {
         jLabel1.setText("   Tu rendimiento:     ");
         jToolBar1.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel2.setText("0,00");
-        jToolBar1.add(jLabel2);
+        notaRendimiento.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        notaRendimiento.setForeground(new java.awt.Color(204, 0, 0));
+        notaRendimiento.setText("0,00");
+        jToolBar1.add(notaRendimiento);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -153,7 +153,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        menuEntrenamiento.setBackground(new java.awt.Color(255, 255, 255));
         menuEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mosqu.png"))); // NOI18N
         menuEntrenamiento.setText("Entrenamiento");
         menuEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -180,7 +179,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuEntrenamiento);
 
-        menuItinerarios.setBackground(new java.awt.Color(255, 255, 255));
         menuItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rut.png"))); // NOI18N
         menuItinerarios.setText("Itinerarios");
         menuItinerarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -207,7 +205,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuItinerarios);
 
-        menuResumenes.setBackground(new java.awt.Color(255, 255, 255));
         menuResumenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/utils.png"))); // NOI18N
         menuResumenes.setText("Resúmenes");
         menuResumenes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -224,7 +221,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuResumenes);
 
-        menuPerfil.setBackground(new java.awt.Color(255, 255, 255));
         menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         menuPerfil.setText("Perfil");
         menuPerfil.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -241,7 +237,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         barraMenu.add(menuPerfil);
 
-        menuAyuda.setBackground(new java.awt.Color(255, 255, 255));
         menuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help2.png"))); // NOI18N
         menuAyuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -268,6 +263,10 @@ public class FrameMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void calcularRendimiento(){
+        notaRendimiento.setText(String.valueOf(tools.getNotaRendimiento()));
+    }
+    
     private void menuConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaEntrenamientosActionPerformed
         cerrarDialogosAbiertos();
         IFrameSesiones iFrameSesiones = new IFrameSesiones(panel);
@@ -414,7 +413,6 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenuItem menuConsultaEntrenamientos;
@@ -427,6 +425,7 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenuItem menuResumen;
     private javax.swing.JMenu menuResumenes;
+    private static javax.swing.JLabel notaRendimiento;
     private static javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
 }
