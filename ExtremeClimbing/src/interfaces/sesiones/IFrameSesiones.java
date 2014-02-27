@@ -1,9 +1,11 @@
 package interfaces.sesiones;
 
 import classes.Sesion;
+import static interfaces.FrameMain.cerrarDialogosAbiertos;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tools.Util;
 
@@ -256,8 +258,18 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         );
 
         btNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new2.png"))); // NOI18N
+        btNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNuevoActionPerformed(evt);
+            }
+        });
 
         btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close1.png"))); // NOI18N
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
 
         btSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btsalir.png"))); // NOI18N
         btSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -271,6 +283,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         menuNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuNuevo.setText("Nuevo");
+        menuNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoActionPerformed(evt);
+            }
+        });
         menuArchivo.add(menuNuevo);
 
         barraMenu.add(menuArchivo);
@@ -280,6 +297,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         menuBorrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuBorrar.setText("Borrar");
+        menuBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBorrarActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuBorrar);
 
         menuModificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -335,6 +357,40 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btSalirActionPerformed
+
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        if (tabla.getSelectedRow() != -1) {
+            int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+            tools.borrarEntrenamiento(codigo);
+            rellenarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
+        cerrarDialogosAbiertos();
+        IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
+        panel.add(iFrameNewSesion);
+        iFrameNewSesion.setVisible(true); 
+    }//GEN-LAST:event_btNuevoActionPerformed
+
+    private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
+        cerrarDialogosAbiertos();
+        IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
+        panel.add(iFrameNewSesion);
+        iFrameNewSesion.setVisible(true); 
+    }//GEN-LAST:event_menuNuevoActionPerformed
+
+    private void menuBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBorrarActionPerformed
+        if (tabla.getSelectedRow() != -1) {
+            int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+            tools.borrarEntrenamiento(codigo);
+            rellenarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_menuBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -201,7 +201,25 @@ public class Util {
         return correcto;
     }
 
+    public void borrarEntrenamiento(int codigo){
+        try {
+            String consulta = "DELETE FROM SESIONES WHERE P_SESION="+codigo;
+            Statement st = conexion.createStatement();
+            st.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }  
+    }
     
+    public void borrarItinerario(int codigo){
+        try {
+            String consulta = "DELETE FROM ITINERARIOS WHERE P_ITINERAR="+codigo;
+            Statement st = conexion.createStatement();
+            st.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }  
+    }
     
     public void cerrarConexion() {
         try {

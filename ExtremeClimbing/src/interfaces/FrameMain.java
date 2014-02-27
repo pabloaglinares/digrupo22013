@@ -301,12 +301,10 @@ public class FrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonFondo4ActionPerformed
 
     private void menuNuevoItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoItinerarioActionPerformed
-        
         cerrarDialogosAbiertos();
         IFrameNewItinerario iFrameNewItinerario = new IFrameNewItinerario(panel);
         panel.add(iFrameNewItinerario);
         iFrameNewItinerario.setVisible(true);
-        
     }//GEN-LAST:event_menuNuevoItinerarioActionPerformed
 
     private void menuEscaladorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEscaladorActionPerformed
@@ -360,7 +358,7 @@ public class FrameMain extends javax.swing.JFrame {
     /**
      * Cierra los dialogos abiertos antes de abrir otro que sea IFrame.
      */
-    private void cerrarDialogosAbiertos() {
+    public static void cerrarDialogosAbiertos() {
         Component[] componentes = panel.getComponents();
         JInternalFrame IFrameAuxiliar = null;
         for (Component componente : componentes) {
@@ -428,6 +426,6 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenuItem menuResumen;
     private javax.swing.JMenu menuResumenes;
-    private javax.swing.JDesktopPane panel;
+    private static javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
 }
