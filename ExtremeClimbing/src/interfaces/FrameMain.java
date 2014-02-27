@@ -37,6 +37,7 @@ public class FrameMain extends javax.swing.JFrame {
         // Pone icono en el Jmenu
         URL url = getClass().getClassLoader().getResource("images/app-icon.png");
         setIconImage(new ImageIcon(url).getImage());
+        tools.getNotaRendimiento();
     }
 
     @SuppressWarnings("unchecked")

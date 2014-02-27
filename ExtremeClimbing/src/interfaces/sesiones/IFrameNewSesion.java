@@ -282,7 +282,7 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
                 sesion.setHoraInicio(hInicio);
                 sesion.setHoraFin(hFin);
                 sesion.setTipoSesion(tipoEntrenamiento.getSelectedItem().toString());
-                if (tools.insertSesionEntrenamiento(sesion)) {
+                if (tools.insertEntrenamiento(sesion)) {
                     this.setVisible(false);
                 } else {
                     System.err.println("Error dando de alta");

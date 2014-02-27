@@ -36,7 +36,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         while (tabla.getRowCount() > 0) {
             ((DefaultTableModel) tabla.getModel()).removeRow(0);
         }
-        List<Sesion> lista = tools.devolverSesiones();
+        List<Sesion> lista = tools.devolverEntrenamientos();
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < lista.size(); i++) {

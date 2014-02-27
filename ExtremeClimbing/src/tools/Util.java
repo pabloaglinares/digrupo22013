@@ -12,8 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Util {
 
@@ -51,7 +49,7 @@ public class Util {
     /**
      * Metodo para devolver las dificultados.
      */
-    public List<Sesion> devolverSesiones() {
+    public List<Sesion> devolverEntrenamientos() {
         List<Sesion> sesiones = new ArrayList<>();
         try {
             String consulta = "SELECT * FROM SESIONES";
@@ -216,6 +214,7 @@ public class Util {
             ex.printStackTrace();
         }
     }
+    
     //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
     public int contarRegistros(String nombreTabla) {
         int numeroRegistros = 0;
@@ -235,7 +234,7 @@ public class Util {
         return numeroRegistros;
     }
 
-    public boolean insertSesionEntrenamiento(Sesion sesion) {
+    public boolean insertEntrenamiento(Sesion sesion) {
         int registros = contarRegistros("SESIONES");
         registros++;
         int escalador = 1;
@@ -298,6 +297,22 @@ public class Util {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public double getNotaRendimiento(){
+        List<Sesion> entrenamientos = devolverEntrenamientos();
+        List<Itinerario> itinerarios = devolverItinerarios();
+        
+        for (int i = 0; i<entrenamientos.size(); i++){
+            long horaFin = entrenamientos.get(i).getHoraFin().getTime();
+            long horaInicio = entrenamientos.get(i).getHoraInicio().getTime();
+            long is;
+            is = (horaFin - horaInicio);
+            System.out.println(is);
+        }
+        
+        
+        return 0;
     }
 
     public void cerrarConexion() {
