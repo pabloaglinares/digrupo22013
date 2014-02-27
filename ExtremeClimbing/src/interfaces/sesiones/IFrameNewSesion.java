@@ -11,6 +11,8 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
     private Util tools = Util.getInsUtil();
+    private boolean flag = false;
+    private Sesion sesion;
 
     public IFrameNewSesion() {
         initComponents();
@@ -20,6 +22,40 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
         initComponents();
         this.panel = panel;
         this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
+    }
+
+    public IFrameNewSesion(JDesktopPane panel, Sesion sesion, boolean flag) {
+        initComponents();
+        this.flag = flag;
+        this.sesion = sesion;
+        rellenarComponentes();
+        this.panel = panel;
+        this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
+    }
+    
+    private void rellenarComponentes(){
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
+        SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
+        selectFecha.setDate(sesion.getFecha());
+        horasHI.setValue(sdfHour.format(sesion.getHoraInicio()));
+        minutosHI.setValue(sdfMin.format(sesion.getHoraInicio()));
+        horasHF.setValue(sdfHour.format(sesion.getHoraFin()));
+        minutosHF.setValue(sdfMin.format(sesion.getHoraFin()));
+        setTipoEntrenamiento(sesion.getTipoSesion());
+        textDescripcion.setText(sesion.getDescripcion());
+    }
+    
+    private void setTipoEntrenamiento(String tipo){
+        if (tipo.equals("Físico")) {
+            tipoEntrenamiento.setSelectedIndex(0);
+        }
+        if (sesion.getTipoSesion().equals("Rocódromo")) {
+            tipoEntrenamiento.setSelectedIndex(1);
+        }
+        if (sesion.getTipoSesion().equals("Roca")) {
+            tipoEntrenamiento.setSelectedIndex(2);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -232,26 +268,31 @@ public class IFrameNewSesion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        Sesion sesion = new Sesion();
-        try {
-            SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
-            Date fecha = selectFecha.getDate();
-            String horaInicio = horasHI.getValue().toString() + ":" + minutosHI.getValue().toString();
-            Date hInicio = sdfHora.parse(horaInicio);
-            String horaFin = horasHF.getValue().toString() + ":" + minutosHF.getValue().toString();
-            Date hFin = sdfHora.parse(horaFin);
-            sesion.setDescripcion(textDescripcion.getText());
-            sesion.setFecha(fecha);
-            sesion.setHoraInicio(hInicio);
-            sesion.setHoraFin(hFin);
-            sesion.setTipoSesion(tipoEntrenamiento.getSelectedItem().toString());
-            if (tools.insertSesionEntrenamiento(sesion)) {
-                this.setVisible(false);
-            } else {
-                System.err.println("Error dando de alta");
+        if (!flag) {
+            Sesion sesion = new Sesion();
+            try {
+                SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
+                Date fecha = selectFecha.getDate();
+                String horaInicio = horasHI.getValue().toString() + ":" + minutosHI.getValue().toString();
+                Date hInicio = sdfHora.parse(horaInicio);
+                String horaFin = horasHF.getValue().toString() + ":" + minutosHF.getValue().toString();
+                Date hFin = sdfHora.parse(horaFin);
+                sesion.setDescripcion(textDescripcion.getText());
+                sesion.setFecha(fecha);
+                sesion.setHoraInicio(hInicio);
+                sesion.setHoraFin(hFin);
+                sesion.setTipoSesion(tipoEntrenamiento.getSelectedItem().toString());
+                if (tools.insertSesionEntrenamiento(sesion)) {
+                    this.setVisible(false);
+                } else {
+                    System.err.println("Error dando de alta");
+                }
+            } catch (ParseException ex) {
+                ex.printStackTrace();
             }
-        } catch (ParseException ex) {
-            ex.printStackTrace();
+        } else {
+            tools.modificarEntrenamiento(sesion);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btGuardarActionPerformed
 

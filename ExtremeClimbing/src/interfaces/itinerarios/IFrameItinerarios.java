@@ -148,7 +148,7 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
 
         tipoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tipoEntrenamiento.setForeground(new java.awt.Color(0, 51, 102));
-        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vía de escalada", "Boulder" }));
+        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Vía de escalada", "Boulder" }));
 
         javax.swing.GroupLayout panelBusquedasLayout = new javax.swing.GroupLayout(panelBusquedas);
         panelBusquedas.setLayout(panelBusquedasLayout);
@@ -298,6 +298,11 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
 
         menuModificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuModificar.setText("Modificar");
+        menuModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuModificar);
 
         barraMenu.add(menuEditar);
@@ -383,6 +388,20 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_menuBorrarActionPerformed
+
+    private void menuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarActionPerformed
+        if (tabla.getSelectedRow() != -1) {
+            int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+            Itinerario itinerario = tools.devolverItinerario(codigo);
+            itinerario.setP_itinerario(codigo);
+            cerrarDialogosAbiertos();
+            IFrameNewItinerario iFrameNewItinerario= new IFrameNewItinerario(panel,itinerario,true);
+            panel.add(iFrameNewItinerario);
+            iFrameNewItinerario.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_menuModificarActionPerformed
 
     
 

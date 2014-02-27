@@ -113,8 +113,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tipoEntrenamiento" max="32767" attributes="0"/>
-                                      <Component id="tipoEntrenamiento1" max="32767" attributes="0"/>
+                                      <Component id="tipo" max="32767" attributes="0"/>
+                                      <Component id="dificultad" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -143,12 +143,12 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tipoEntrenamiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tipoEntrenamiento1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dificultad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -251,7 +251,7 @@
             <Property name="text" type="java.lang.String" value="Tipo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="tipoEntrenamiento">
+        <Component class="javax.swing.JComboBox" name="tipo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -283,7 +283,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="fechaDel" min="-2" pref="222" max="-2" attributes="0"/>
+                      <Component id="fechaItinerario" min="-2" pref="222" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -293,7 +293,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fechaDel" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="fechaItinerario" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -302,7 +302,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="com.toedter.calendar.JDateChooser" name="fechaDel">
+            <Component class="com.toedter.calendar.JDateChooser" name="fechaItinerario">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="33" red="0" type="rgb"/>
@@ -322,7 +322,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="tipoEntrenamiento1">
+        <Component class="javax.swing.JComboBox" name="dificultad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>

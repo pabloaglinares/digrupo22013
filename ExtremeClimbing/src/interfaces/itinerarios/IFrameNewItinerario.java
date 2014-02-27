@@ -6,10 +6,7 @@
 package interfaces.itinerarios;
 
 import classes.Itinerario;
-import java.awt.Frame;
 import java.awt.Image;
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -23,11 +20,13 @@ import tools.Util;
  * @author USUARIO
  */
 public class IFrameNewItinerario extends javax.swing.JInternalFrame {
-   
+
     private JDesktopPane panel;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif", "jpeg");
     private String rutaImagen;
     private Util tools = Util.getInsUtil();
+    private boolean flag = false;
+    private Itinerario itinerario;
 
     /**
      * Creates new form IFrameNewSesion
@@ -37,6 +36,28 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         this.panel = panel;
         this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
         rutaImagen = "";
+    }
+
+    public IFrameNewItinerario(JDesktopPane panel, Itinerario itinerario, boolean flag) {
+        initComponents();
+        this.panel = panel;
+        this.flag = flag;
+        this.itinerario = itinerario;
+        rellenarComponentes();
+        this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
+    }
+
+    private void rellenarComponentes() {
+        fechaItinerario.setDate(itinerario.getFecha());
+        inputNombre.setText(itinerario.getNombre());
+        inputLocalizacion.setText(itinerario.getLocalizacion());
+        setTipoItinerario(itinerario.getTipo());
+        rutaImagen = itinerario.getRutaFotografia();
+        BotonImg.setIcon(new ImageIcon(rutaImagen));
+    }
+
+    private void setTipoItinerario(String tipo) {
+
     }
 
     @SuppressWarnings("unchecked")
@@ -55,11 +76,11 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         BotonImg = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        tipoEntrenamiento = new javax.swing.JComboBox();
+        tipo = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
-        fechaDel = new com.toedter.calendar.JDateChooser();
+        fechaItinerario = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        tipoEntrenamiento1 = new javax.swing.JComboBox();
+        dificultad = new javax.swing.JComboBox();
         btGuardar = new javax.swing.JButton();
         btSalir = new javax.swing.JButton();
 
@@ -105,14 +126,14 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Tipo");
 
-        tipoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tipoEntrenamiento.setForeground(new java.awt.Color(0, 51, 102));
-        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vía de escalada", "Boulder" }));
+        tipo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tipo.setForeground(new java.awt.Color(0, 51, 102));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vía de escalada", "Boulder" }));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        fechaDel.setForeground(new java.awt.Color(0, 51, 102));
-        fechaDel.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        fechaItinerario.setForeground(new java.awt.Color(0, 51, 102));
+        fechaItinerario.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Fecha de resolución");
@@ -125,7 +146,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -133,14 +154,14 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaDel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        tipoEntrenamiento1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tipoEntrenamiento1.setForeground(new java.awt.Color(0, 51, 102));
-        tipoEntrenamiento1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b", "6b+", "6c", "6c+", "7a", "7a+", "7b", "7b+", "7c", "7c+", "8a", "8a+", "8b", "8b+", "8c/8c+", "9a", "9a+", "9b", "9b+" }));
+        dificultad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dificultad.setForeground(new java.awt.Color(0, 51, 102));
+        dificultad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b", "6b+", "6c", "6c+", "7a", "7a+", "7b", "7b+", "7c", "7c+", "8a", "8a+", "8b", "8b+", "8c/8c+", "9a", "9a+", "9b", "9b+" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,8 +196,8 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tipoEntrenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tipoEntrenamiento1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dificultad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -196,11 +217,11 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tipoEntrenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tipoEntrenamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonImg, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,18 +318,23 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        Itinerario itinerario = new Itinerario();
-        Date fecha = fechaDel.getDate();
-        itinerario.setFecha(fecha);
-        itinerario.setNombre(inputNombre.getText());
-        itinerario.setLocalizacion(inputLocalizacion.getText());
-        itinerario.setTipo(tipoEntrenamiento.getSelectedItem().toString());
-        itinerario.setDificultad(tipoEntrenamiento1.getSelectedItem().toString());
-        itinerario.setRutaFotografia(rutaImagen);
-        if (tools.insertItinerario(itinerario)) {
-            this.setVisible(false);
+        if (!flag) {
+            Itinerario itinerario = new Itinerario();
+            Date fecha = fechaItinerario.getDate();
+            itinerario.setFecha(fecha);
+            itinerario.setNombre(inputNombre.getText());
+            itinerario.setLocalizacion(inputLocalizacion.getText());
+            itinerario.setTipo(tipo.getSelectedItem().toString());
+            itinerario.setDificultad(dificultad.getSelectedItem().toString());
+            itinerario.setRutaFotografia(rutaImagen);
+            if (tools.insertItinerario(itinerario)) {
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error", "No se pudo guardar", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(null,"Error","No se pudo guardar",JOptionPane.ERROR_MESSAGE);
+            tools.modificarItinerario(itinerario);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btGuardarActionPerformed
 
@@ -319,9 +345,10 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btSalir;
     private javax.swing.JButton btSelectPicture;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox dificultad;
     private javax.swing.JLabel etLocalizacion;
     private javax.swing.JLabel etNombre;
-    private com.toedter.calendar.JDateChooser fechaDel;
+    private com.toedter.calendar.JDateChooser fechaItinerario;
     private javax.swing.JTextField inputLocalizacion;
     private javax.swing.JTextField inputNombre;
     private javax.swing.JLabel jLabel3;
@@ -331,7 +358,6 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JComboBox tipoEntrenamiento;
-    private javax.swing.JComboBox tipoEntrenamiento1;
+    private javax.swing.JComboBox tipo;
     // End of variables declaration//GEN-END:variables
 }

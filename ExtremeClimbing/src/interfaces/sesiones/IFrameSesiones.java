@@ -98,7 +98,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         tipoEntrenamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tipoEntrenamiento.setForeground(new java.awt.Color(0, 51, 102));
-        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Físico", "Rocódromo", "Roca" }));
+        tipoEntrenamiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Físico", "Rocódromo", "Roca" }));
 
         etFechas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         etFechas.setText("Fechas del");
@@ -306,6 +306,11 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
         menuModificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menuModificar.setText("Modificar");
+        menuModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarActionPerformed(evt);
+            }
+        });
         menuEditar.add(menuModificar);
 
         barraMenu.add(menuEditar);
@@ -364,7 +369,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             tools.borrarEntrenamiento(codigo);
             rellenarTabla();
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 
@@ -372,14 +377,14 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
         cerrarDialogosAbiertos();
         IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
         panel.add(iFrameNewSesion);
-        iFrameNewSesion.setVisible(true); 
+        iFrameNewSesion.setVisible(true);
     }//GEN-LAST:event_btNuevoActionPerformed
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
         cerrarDialogosAbiertos();
         IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
         panel.add(iFrameNewSesion);
-        iFrameNewSesion.setVisible(true); 
+        iFrameNewSesion.setVisible(true);
     }//GEN-LAST:event_menuNuevoActionPerformed
 
     private void menuBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBorrarActionPerformed
@@ -388,9 +393,23 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             tools.borrarEntrenamiento(codigo);
             rellenarTabla();
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_menuBorrarActionPerformed
+
+    private void menuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarActionPerformed
+        if (tabla.getSelectedRow() != -1) {
+            int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+            Sesion sesion = tools.devolverEntrenamiento(codigo);
+            sesion.setCodigo(codigo);
+            cerrarDialogosAbiertos();
+            IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel,sesion,true);
+            panel.add(iFrameNewSesion);
+            iFrameNewSesion.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_menuModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
