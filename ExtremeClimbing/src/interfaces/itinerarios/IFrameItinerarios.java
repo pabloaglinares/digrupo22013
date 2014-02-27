@@ -1,45 +1,53 @@
 package interfaces.itinerarios;
 
-import interfaces.sesiones.*;
+import classes.Itinerario;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.swing.JDesktopPane;
+import javax.swing.table.DefaultTableModel;
+import tools.Util;
 
 public class IFrameItinerarios extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
+    private Util tools = Util.getInsUtil();
     
     public IFrameItinerarios(JDesktopPane panel) {
         initComponents();
         this.panel = panel;
         fijarAnchoColumnas();
+        rellenarTabla();
         this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
     }
     
     //Metodo para fijar el ancho de sa columnas y la altura de las filas
     private void fijarAnchoColumnas() {
-        int[] anchos = {200, 150, 150, 350, 700};
+        int[] anchos = {50, 50, 200, 200, 150, 350, 700};
         for (int i = 0; i < tabla.getColumnCount(); i++) {
             tabla.getColumnModel().getColumn(i).setMaxWidth(anchos[i]);
         }
         tabla.setRowHeight(30);
     }
     
-    /*public void rellenarTabla() {
-        if (tools.contarRegistros("ps_customer") > 0) {
-            this.registrosEncontrados.setText("   " + tools.contarRegistros("ps_customer") + " registros encontrados");
-        }
+    private void rellenarTabla(){
         DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
         while (tabla.getRowCount() > 0) {
             ((DefaultTableModel) tabla.getModel()).removeRow(0);
         }
-        List<Cliente> lista = tools.pedirClientes();
+        List<Itinerario> lista = tools.devolverItinerarios();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
         for (int i = 0; i < lista.size(); i++) {
-            Object[] fila = {lista.get(i).getCodigo(),
-                lista.get(i).getNombre(), lista.get(i).getApellidos(),
-                lista.get(i).getCorreo()};
+            String fecha = sdfDate.format(lista.get(i).getFecha());
+            Object[] fila = {lista.get(i).getP_itinerario(),
+                lista.get(i).getA_escalador(), lista.get(i).getNombre(),
+            lista.get(i).getLocalizacion(), lista.get(i).getDificultad(), fecha,
+            lista.get(i).getTipo()};
             modeloTabla.addRow(fila);
         }
         tabla.setModel(modeloTabla);
-    }*/
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -192,17 +200,17 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "FECHA", "HORA INICIO", "HORA FIN", "TIPO", "DESCRIPCION"
+                "ID", "ESC", "NOMBRE", "LOCALIZACION", "DIFICULTAD", "FECHA", "TIPO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -211,6 +219,15 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
         });
         tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrolltabla.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(0).setResizable(false);
+            tabla.getColumnModel().getColumn(1).setResizable(false);
+            tabla.getColumnModel().getColumn(2).setResizable(false);
+            tabla.getColumnModel().getColumn(3).setResizable(false);
+            tabla.getColumnModel().getColumn(4).setResizable(false);
+            tabla.getColumnModel().getColumn(5).setResizable(false);
+            tabla.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
         panelTabla.setLayout(panelTablaLayout);

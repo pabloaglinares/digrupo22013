@@ -44,6 +44,7 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Informes de Rendimiento");
 
         jPanel1.setLayout(new java.awt.GridLayout(5, 0));

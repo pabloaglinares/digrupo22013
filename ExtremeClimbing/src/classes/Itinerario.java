@@ -5,23 +5,25 @@ import java.util.Date;
 
 public class Itinerario {
     
+    private int p_itinerario;
+    private int a_escalador;
     private String nombre;
     private String localizacion;
     private String tipo;
     private String dificultad;
     private Date fecha;
-    private File fotografia;
+    private String rutaFotografia;
 
     public Itinerario() {
     }
 
-    public Itinerario(String nombre, String localizacion, String tipo, String dificultad, Date fecha, File fotografia) {
+    public Itinerario(String nombre, String localizacion, String tipo, String dificultad, Date fecha, String rutaFotografia) {
         this.nombre = nombre;
         this.localizacion = localizacion;
         this.tipo = tipo;
         this.dificultad = dificultad;
         this.fecha = fecha;
-        this.fotografia = fotografia;
+        this.rutaFotografia = rutaFotografia;
     }
 
     public String getNombre() {
@@ -64,12 +66,31 @@ public class Itinerario {
         this.fecha = fecha;
     }
 
-    public File getFotografia() {
-        return fotografia;
+    public String getRutaFotografia() {
+        return rutaFotografia;
     }
 
-    public void setFotografia(File fotografia) {
-        this.fotografia = fotografia;
+    public void setRutaFotografia(String rutaFotografia) {
+        this.rutaFotografia = rutaFotografia;
     }
+
+    public int getP_itinerario() {
+        return p_itinerario;
+    }
+
+    public void setP_itinerario(int p_itinerario) {
+        this.p_itinerario = p_itinerario;
+    }
+
+    public int getA_escalador() {
+        return a_escalador;
+    }
+
+    public void setA_escalador(int a_escalador) {
+        this.a_escalador = a_escalador;
+    }
+    
+    
+
     
 }

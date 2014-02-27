@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import tools.Util;
 
@@ -22,7 +23,7 @@ import tools.Util;
  * @author USUARIO
  */
 public class IFrameNewItinerario extends javax.swing.JInternalFrame {
-
+   
     private JDesktopPane panel;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif", "jpeg");
     private String rutaImagen;
@@ -266,7 +267,7 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
         //Si hacemos click en el boton seleccionar
         if (option == JFileChooser.APPROVE_OPTION) {
             //Obtener el nombre del archivo seleccionado
-            String nomFile = dlg.getSelectedFile().getName();
+            rutaImagen = dlg.getSelectedFile().getAbsolutePath();
             //Obtener la direccion donde se guarda la imagen
             String file = dlg.getSelectedFile().getPath();
             BotonImg.setIcon(new ImageIcon(file));
@@ -281,14 +282,12 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
             BotonImg.setIcon(newIcon);
             jLabel6.setVisible(false);
             jLabel6.setText(file);
-
         }
     }//GEN-LAST:event_btSelectPictureActionPerformed
 
     private void BotonImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonImgActionPerformed
         //Obtener la direccion donde se guarda la imagen
         String ruta = jLabel6.getText();
-
         JDImg dialog = new JDImg(null, true, ruta);
         dialog.setVisible(true);
     }//GEN-LAST:event_BotonImgActionPerformed
@@ -300,12 +299,17 @@ public class IFrameNewItinerario extends javax.swing.JInternalFrame {
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
         Itinerario itinerario = new Itinerario();
         Date fecha = fechaDel.getDate();
+        itinerario.setFecha(fecha);
         itinerario.setNombre(inputNombre.getText());
         itinerario.setLocalizacion(inputLocalizacion.getText());
         itinerario.setTipo(tipoEntrenamiento.getSelectedItem().toString());
         itinerario.setDificultad(tipoEntrenamiento1.getSelectedItem().toString());
-        itinerario.setFotografia(new File(itinerario.getFotografia().getAbsolutePath()));
-        tools.insertItinerario(itinerario);
+        itinerario.setRutaFotografia(rutaImagen);
+        if (tools.insertItinerario(itinerario)) {
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null,"Error","No se pudo guardar",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btGuardarActionPerformed
 
 

@@ -11,14 +11,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Util {
 
     private static Util tools;
     private Connection conexion;
-    private ArrayList<String> dificultades = new ArrayList<>();
 
     private Util() {
     }
@@ -49,22 +46,14 @@ public class Util {
         return correcto;
     }
 
-    private void startDificultades() {
-
-    }
-
     /**
      * Metodo para devolver las dificultados.
      */
-    public ArrayList<String> getDificultades() {
-        return dificultades;
-    }
 
     public List<Sesion> devolverSesiones() {
         List<Sesion> sesiones = new ArrayList<>();
         try {
             String consulta = "SELECT * FROM SESIONES";
-            SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat sdfHour = new SimpleDateFormat("HH:mm");
             Statement sentencia = conexion.createStatement();
             ResultSet result = sentencia.executeQuery(consulta);
@@ -85,6 +74,31 @@ public class Util {
             ex.printStackTrace();
         }
         return sesiones;
+    }
+    
+    public List<Itinerario> devolverItinerarios(){
+        List<Itinerario> itinerarios = new ArrayList<>();
+        try {
+            String consulta = "SELECT * FROM ITINERARIOS";
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+            Statement sentencia = conexion.createStatement();
+            ResultSet result = sentencia.executeQuery(consulta);
+            while (result.next()) {
+               Itinerario itinerario =  new Itinerario();
+               itinerario.setP_itinerario(result.getInt(1));
+               itinerario.setA_escalador(result.getInt(2));
+               itinerario.setNombre(result.getString(3));
+               itinerario.setLocalizacion(result.getString(4));
+               itinerario.setDificultad(result.getString(5));
+               itinerario.setFecha(result.getDate(6));
+               itinerario.setRutaFotografia(result.getString(7));
+               itinerario.setTipo(result.getString(8));
+               itinerarios.add(itinerario);
+            }          
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return itinerarios;
     }
 
     //Contar registros de una tabla para que no se pase en las busquedas. de momento así.
@@ -132,12 +146,16 @@ public class Util {
 
     public boolean insertItinerario(Itinerario itinerario) {
         boolean correcto = true;
+        int registros = contarRegistros("ITINERARIOS");
+        registros++;
+        int escalador = 1;
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            String consulta = "INSERT INTO ITINERARIOS (NOMBRE,localizacion,tipo,dificultad,fecha,fotografia) VALUES ('"
-                    + itinerario.getNombre() + "','" + itinerario.getLocalizacion() + "','" + itinerario.getTipo()
-                    + "','" + itinerario.getDificultad() + "','" + sdfDate.format(itinerario.getFecha()) + "','"
-                    + itinerario.getFotografia().getAbsolutePath() + "')";
+            String consulta = "INSERT INTO ITINERARIOS (P_ITINERAR,A_ESCALADO,NOMBRE,LOCALIZACI,DIFICULTAD,FECHA, URLFOTOGRA,"
+                    + "TIPO) VALUES ("
+                    + registros + "," + escalador + ",'" + itinerario.getNombre()
+                    + "','" + itinerario.getLocalizacion()+ "','" + itinerario.getDificultad() + "','"
+                    + sdfDate.format(itinerario.getFecha())+"','"+itinerario.getRutaFotografia()+"','"+itinerario.getTipo()+"')";
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);
         } catch (SQLException ex) {
@@ -145,10 +163,6 @@ public class Util {
             ex.printStackTrace();
         }
         return correcto;
-    }
-
-    public void obtenerSesiones() {
-
     }
 
     public void cerrarConexion() {

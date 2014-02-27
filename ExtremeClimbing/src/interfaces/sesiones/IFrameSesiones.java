@@ -30,9 +30,6 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     }
 
     public void rellenarTabla() {
-//        if (tools.contarRegistros("ps_customer") > 0) {
-//            this.registrosEncontrados.setText("   " + tools.contarRegistros("ps_customer") + " registros encontrados");
-//        }
         DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
         while (tabla.getRowCount() > 0) {
             ((DefaultTableModel) tabla.getModel()).removeRow(0);
