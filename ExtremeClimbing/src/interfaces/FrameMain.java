@@ -263,13 +263,13 @@ public class FrameMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcularRendimiento(){
+    public void calcularRendimiento(){
         notaRendimiento.setText(String.valueOf(tools.getNotaRendimiento()));
     }
     
     private void menuConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaEntrenamientosActionPerformed
         cerrarDialogosAbiertos();
-        IFrameSesiones iFrameSesiones = new IFrameSesiones(panel);
+        IFrameSesiones iFrameSesiones = new IFrameSesiones(panel,this);
         panel.add(iFrameSesiones);
         iFrameSesiones.setVisible(true);
     }//GEN-LAST:event_menuConsultaEntrenamientosActionPerformed
@@ -323,7 +323,7 @@ public class FrameMain extends javax.swing.JFrame {
 
     private void menuConsultaItinerariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaItinerariosActionPerformed
         cerrarDialogosAbiertos();
-        IFrameItinerarios iFrameItinerarios = new IFrameItinerarios(panel);
+        IFrameItinerarios iFrameItinerarios = new IFrameItinerarios(panel, this);
         panel.add(iFrameItinerarios);
         iFrameItinerarios.setVisible(true);
     }//GEN-LAST:event_menuConsultaItinerariosActionPerformed
@@ -358,7 +358,7 @@ public class FrameMain extends javax.swing.JFrame {
     /**
      * Cierra los dialogos abiertos antes de abrir otro que sea IFrame.
      */
-    public static void cerrarDialogosAbiertos() {
+    public void cerrarDialogosAbiertos() {
         Component[] componentes = panel.getComponents();
         JInternalFrame IFrameAuxiliar = null;
         for (Component componente : componentes) {
@@ -369,6 +369,7 @@ public class FrameMain extends javax.swing.JFrame {
                 e.getStackTrace();
             }
         }
+        calcularRendimiento();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package interfaces.itinerarios;
 
 import classes.Itinerario;
-import static interfaces.FrameMain.cerrarDialogosAbiertos;
+import interfaces.FrameMain;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JDesktopPane;
@@ -13,10 +13,12 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
     private Util tools = Util.getInsUtil();
+    private FrameMain frame;
     
-    public IFrameItinerarios(JDesktopPane panel) {
+    public IFrameItinerarios(JDesktopPane panel, FrameMain frame) {
         initComponents();
         this.panel = panel;
+        this.frame = frame;
         fijarAnchoColumnas();
         rellenarTabla();
         this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
@@ -366,14 +368,14 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
-        cerrarDialogosAbiertos();
+        frame.cerrarDialogosAbiertos();
         IFrameNewItinerario iFrameNewItinerario = new IFrameNewItinerario(panel);
         panel.add(iFrameNewItinerario);
         iFrameNewItinerario.setVisible(true);
     }//GEN-LAST:event_btNuevoActionPerformed
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
-        cerrarDialogosAbiertos();
+        frame.cerrarDialogosAbiertos();
         IFrameNewItinerario iFrameNewItinerario = new IFrameNewItinerario(panel);
         panel.add(iFrameNewItinerario);
         iFrameNewItinerario.setVisible(true);
@@ -394,7 +396,7 @@ public class IFrameItinerarios extends javax.swing.JInternalFrame {
             int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
             Itinerario itinerario = tools.devolverItinerario(codigo);
             itinerario.setP_itinerario(codigo);
-            cerrarDialogosAbiertos();
+            frame.cerrarDialogosAbiertos();
             IFrameNewItinerario iFrameNewItinerario= new IFrameNewItinerario(panel,itinerario,true);
             panel.add(iFrameNewItinerario);
             iFrameNewItinerario.setVisible(true);

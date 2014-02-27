@@ -1,7 +1,7 @@
 package interfaces.sesiones;
 
 import classes.Sesion;
-import static interfaces.FrameMain.cerrarDialogosAbiertos;
+import interfaces.FrameMain;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JDesktopPane;
@@ -13,10 +13,12 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
 
     private JDesktopPane panel;
     private Util tools = Util.getInsUtil();
+    private FrameMain frame;
 
-    public IFrameSesiones(JDesktopPane panel) {
+    public IFrameSesiones(JDesktopPane panel, FrameMain frame) {
         initComponents();
         this.panel = panel;
+        this.frame=frame;
         fijarAnchoColumnas();
         rellenarTabla();
         this.setLocation(panel.getWidth() / 2 - this.getWidth() / 2, panel.getHeight() / 2 - this.getHeight() / 2);
@@ -374,14 +376,14 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
-        cerrarDialogosAbiertos();
+        frame.cerrarDialogosAbiertos();
         IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
         panel.add(iFrameNewSesion);
         iFrameNewSesion.setVisible(true);
     }//GEN-LAST:event_btNuevoActionPerformed
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
-        cerrarDialogosAbiertos();
+        frame.cerrarDialogosAbiertos();
         IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel);
         panel.add(iFrameNewSesion);
         iFrameNewSesion.setVisible(true);
@@ -402,7 +404,7 @@ public class IFrameSesiones extends javax.swing.JInternalFrame {
             int codigo = (int) tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
             Sesion sesion = tools.devolverEntrenamiento(codigo);
             sesion.setCodigo(codigo);
-            cerrarDialogosAbiertos();
+            frame.cerrarDialogosAbiertos();
             IFrameNewSesion iFrameNewSesion = new IFrameNewSesion(panel,sesion,true);
             panel.add(iFrameNewSesion);
             iFrameNewSesion.setVisible(true);
