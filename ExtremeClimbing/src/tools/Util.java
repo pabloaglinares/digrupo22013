@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Util {
@@ -45,6 +46,16 @@ public class Util {
         }
         return correcto;
     }
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(Connection conexion) {
+        this.conexion = conexion;
+    }
+    
+    
 
     /**
      * Metodo para devolver las dificultados.
@@ -302,12 +313,14 @@ public class Util {
     public float getNotaRendimiento(){
         List<Sesion> entrenamientos = devolverEntrenamientos();
         List<Itinerario> itinerarios = devolverItinerarios();
+        Escalador escalador = devolerEscalador();
         float horas = 0;
         float puntosEntrenamientos;
         float puntosItinerarios;
         for (int i = 0; i<entrenamientos.size(); i++){
             long horaFin = entrenamientos.get(i).getHoraFin().getTime();
             long horaInicio = entrenamientos.get(i).getHoraInicio().getTime();
+            //if (new Date().getTime() )
             horas += (float) (horaFin - horaInicio)/1000/60/60;
             if (horas > 10) {
                 horas = 10;

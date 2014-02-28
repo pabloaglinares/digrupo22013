@@ -7,7 +7,13 @@
 package interfaces.informes;
 
 import interfaces.FrameMain;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JDesktopPane;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import tools.Util;
 
 /**
  *
@@ -17,6 +23,7 @@ public class IFrameInforme1 extends javax.swing.JInternalFrame {
 
     private FrameMain frame;
     private JDesktopPane panel;
+    private Util tools = Util.getInsUtil();
     
     public IFrameInforme1(JDesktopPane panel, FrameMain frame) {
         initComponents();
@@ -80,9 +87,17 @@ public class IFrameInforme1 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        
+        try {
+                Map parametros = new HashMap();
+                parametros.put("fecha1", inicio.getDate());
+                parametros.put("fecha2", fin.getDate());
+                JasperPrint print = JasperFillManager.fillReport("informes\\itinerario2fechas.jasper", 
+                        parametros, tools.getConexion());
+                JasperExportManager.exportReportToPdfFile(print, "informe.pdf");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
