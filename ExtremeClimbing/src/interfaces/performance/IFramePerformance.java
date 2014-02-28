@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package interfaces.performance;
 
+import interfaces.FrameMain;
+import interfaces.informes.IFrameInforme1;
+import interfaces.itinerarios.IFrameItinerarios;
 import javax.swing.JDesktopPane;
 
 /**
@@ -17,10 +14,12 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
     
     
     private JDesktopPane panel;
+    private FrameMain frame;
     
-    public IFramePerformance(JDesktopPane panel) {
+    public IFramePerformance(JDesktopPane panel, FrameMain frame) {
         initComponents();
         this.panel = panel;
+        this.frame = frame;
         this.setLocation(panel.getWidth()/2-this.getWidth()/2,panel.getHeight()/2-this.getHeight()/2);
     }
     
@@ -50,6 +49,11 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new java.awt.GridLayout(5, 0));
 
         jButton1.setText("Itinerarios Realizados");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
 
         jButton2.setText("Entrenamientos Realizados");
@@ -83,6 +87,13 @@ public class IFramePerformance extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        frame.cerrarDialogosAbiertos();
+        IFrameInforme1 iFrameInforme1 = new IFrameInforme1(panel, frame);
+        panel.add(iFrameInforme1);
+        iFrameInforme1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

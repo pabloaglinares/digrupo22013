@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="itinerario2fechas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="205ac5cf-7033-49fb-9acf-d10a06b59ba1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha1" class="java.util.Date"/>
+	<parameter name="fecha2" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select E.NOMBRE, E.APELLIDOS, I.NOMBRE,
+I.LOCALIZACI, I.TIPO, I.DIFICULTAD
+from ESCALADORES E, ITINERARIOS I
+where E.P_ESCALADO=I.A_ESCALADO
+and I.FECHA between $P{fecha1} and $P{fecha2}]]>
+	</queryString>
+	<field name="E.NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDOS" class="java.lang.String">
+		<fieldDescription><![CDATA[APELLIDOS]]></fieldDescription>
+	</field>
+	<field name="I.NOMBRE" class="java.lang.String"/>
+	<field name="LOCALIZACI" class="java.lang.String">
+		<fieldDescription><![CDATA[LOCALIZACI]]></fieldDescription>
+	</field>
+	<field name="TIPO" class="java.lang.String">
+		<fieldDescription><![CDATA[TIPO]]></fieldDescription>
+	</field>
+	<field name="DIFICULTAD" class="java.lang.String">
+		<fieldDescription><![CDATA[DIFICULTAD]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="174" splitType="Stretch">
+			<staticText>
+				<reportElement x="54" y="40" width="248" height="53" forecolor="#CC0099" uuid="c6436358-e143-4cac-a0ae-9959785121b1"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extreme Climbing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="40" width="248" height="101" uuid="32940cbd-ff64-40aa-8e00-65050b67310a"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extreme Climbing]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="47" width="100" height="20" uuid="1e295da5-9e78-45f8-99e6-f93c657c4b03"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escalador:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="154" y="47" width="100" height="20" uuid="73514dc1-4af7-4cfe-8964-5b8e20dce0e5"/>
+				<textFieldExpression><![CDATA[$F{E.NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="47" width="166" height="20" uuid="2671f30c-d2b5-415d-963b-4711547a3af9"/>
+				<textFieldExpression><![CDATA[$F{APELLIDOS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement x="191" y="12" width="100" height="20" uuid="f7a99baa-c86a-4dcf-aa25-2cdfc418db36"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Itinerarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="53" width="100" height="20" uuid="88830f91-781a-4af1-9277-75a599bd2e05"/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="53" width="100" height="20" uuid="e1e241d2-aa82-4734-9d5a-75d003dfdd5e"/>
+				<text><![CDATA[Localización:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="53" width="100" height="20" uuid="c4b650e6-266e-4937-93f2-24e92fdbc003"/>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="53" width="100" height="20" uuid="f761455c-3804-4d62-881d-707e2d0be37e"/>
+				<text><![CDATA[Dificultad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="73" width="100" height="20" uuid="eb1d3504-b03a-4dbe-a14e-d64e2b8d25b0"/>
+				<textFieldExpression><![CDATA[$F{I.NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="73" width="100" height="20" uuid="4b73e7e4-7811-4aa7-b080-1811da180aaa"/>
+				<textFieldExpression><![CDATA[$F{LOCALIZACI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="73" width="100" height="20" uuid="0fbe1b62-dc3a-424d-8fe5-751f7ffecc1e"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="73" width="100" height="20" uuid="d6b1dbce-271f-4d24-8cff-91cc4093b38c"/>
+				<textFieldExpression><![CDATA[$F{DIFICULTAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="69" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

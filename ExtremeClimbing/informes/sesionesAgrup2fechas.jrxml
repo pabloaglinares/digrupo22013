@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="itinerario2fechas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="205ac5cf-7033-49fb-9acf-d10a06b59ba1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="7"/>
+	<parameter name="fecha1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select e.nombre,e.apellido,i.nombre,i.localizaci,i.tipo,i.dificultad,e.FECHAINICI,e.FECHAFIN
+from escaladores e,itinerarios i
+where e.A_ITINERAR=i.P_ITINERAR
+and e.FECHAINICI>=$P{fecha1}  and e.FECHAFIN<=$P{fecha2} ]]>
+	</queryString>
+	<field name="e.NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDO" class="java.lang.String">
+		<fieldDescription><![CDATA[APELLIDO]]></fieldDescription>
+	</field>
+	<field name="i.NOMBRE" class="java.lang.String"/>
+	<field name="LOCALIZACI" class="java.lang.String">
+		<fieldDescription><![CDATA[LOCALIZACI]]></fieldDescription>
+	</field>
+	<field name="TIPO" class="java.lang.String">
+		<fieldDescription><![CDATA[TIPO]]></fieldDescription>
+	</field>
+	<field name="DIFICULTAD" class="java.lang.String">
+		<fieldDescription><![CDATA[DIFICULTAD]]></fieldDescription>
+	</field>
+	<field name="FECHAINICI" class="java.lang.String">
+		<fieldDescription><![CDATA[FECHAINICI]]></fieldDescription>
+	</field>
+	<field name="FECHAFIN" class="java.lang.String">
+		<fieldDescription><![CDATA[FECHAFIN]]></fieldDescription>
+	</field>
+	<group name="tipoSes">
+		<groupExpression><![CDATA[$F{TIPOSESION}]]></groupExpression>
+		<groupHeader>
+			<band height="44">
+				<staticText>
+					<reportElement x="37" y="10" width="100" height="20" uuid="22685ee4-d06b-4609-83aa-d9010c36f90b"/>
+					<text><![CDATA[Tipo:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="140" y="10" width="100" height="20" uuid="cc9400a0-04f7-4ddf-8145-e1ed54318983"/>
+					<textFieldExpression><![CDATA[$F{TIPOSESION}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="174" splitType="Stretch">
+			<image>
+				<reportElement x="340" y="0" width="254" height="140" uuid="2a10742d-761b-42d9-8b30-d67779c6409e"/>
+				<imageExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\ProyectooGrupo\\digrupo22013\\digrupo22013\\ExtremeClimbing\\src\\images\\logotipoSinLetras.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="12" y="67" width="248" height="53" uuid="96ac24a5-9ddc-4596-9ce4-63b0d56f3ec0"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extreme Climbing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="67" width="248" height="53" forecolor="#CC0099" uuid="7afff242-5917-4881-8bf6-d4e9d110b7e7"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extreme Climbing]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="47" width="100" height="20" uuid="1e295da5-9e78-45f8-99e6-f93c657c4b03"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escalador:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="139" y="47" width="100" height="20" uuid="5540585f-7efc-465d-8c6f-547f2b5c9ff5"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="47" width="100" height="20" uuid="f38c66eb-2a97-4bc4-8498-594c9ba32a1c"/>
+				<textFieldExpression><![CDATA[$F{APELLIDO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="166" y="25" width="100" height="20" uuid="7b634810-acd3-4405-8944-878aa6fe15f4"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sesiones]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="294" y="16" width="100" height="20" uuid="124fe0f2-1381-43b2-b863-a7326b2fe0bc"/>
+				<text><![CDATA[Descripción:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="294" y="46" width="100" height="20" uuid="8f7e4a1f-8893-41ed-82cf-8498715669a3"/>
+				<textFieldExpression><![CDATA[$F{DESCRIPCIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

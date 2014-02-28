@@ -330,7 +330,7 @@ public class FrameMain extends javax.swing.JFrame {
 
     private void menuResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResumenActionPerformed
         cerrarDialogosAbiertos();
-        IFramePerformance iFramePerformance = new IFramePerformance(panel);
+        IFramePerformance iFramePerformance = new IFramePerformance(panel,this);
         panel.add(iFramePerformance);
         iFramePerformance.setVisible(true);
     }//GEN-LAST:event_menuResumenActionPerformed
