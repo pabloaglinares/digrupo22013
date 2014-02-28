@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<!-- 
+   Ejemplo de instalador con IzPack
+-->
+<installation version="1.0">
+    <!-- 
+        Información acerca de la aplicación.
+    -->
+    <info>
+        <appname>ExtremeClimbing</appname>
+        <appversion>1.0</appversion>
+        <authors>
+            <author name="Grupo2" email="leroys.aglinares@gmail.com"/>
+        </authors>
+        <url>http://aglinformatica.es/</url>
+    </info>
+
+    <!-- 
+        Tamaño del instalador en pixeles. Indicamos si se podrá modificar este tamaño por el usuario.
+    -->
+    <guiprefs width="640" height="480" resizable="yes"/>
+
+    <!-- 
+        Indicamos en que idiomas queremos el instalador. El usuario podrá seleccionar. Cada uno de estos está asociado
+	con un xml que está en el directorio de instalación de izpack. Si lo modificamos, modificaremos los textos del
+	instalador.
+    -->
+    <locale>
+		<langpack iso3="spa"/>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <!-- 
+       	Archivos que vamos a utilizar para mostrar información en el instalador. El id tiene que coincidir con
+	con el que pongamos luego.
+    -->
+    <resources>
+		<!-- Texto mostrado en el panel LicencePanel -->
+        <res id="LicencePanel.licence_spa" src="LicenciaES.txt"/>
+		<res id="LicencePanel.licence_eng" src="LicenseEN.txt"/>
+		<!-- Texto mostrado en el panel InfoPanel -->
+        <res id="InfoPanel.info_spa" src="LeemeES.txt"/>
+        <res id="InfoPanel.info_eng" src="ReadmeEN.txt"/>
+
+		<!-- Archivos que definen los accesos directos. El primero para Windows, el segundo para Linux -->
+		<res id="shortcutSpec.xml" src="shortcutSpec.xml"/> 
+
+		<!-- Definición de las rutas por defecto -->
+		<res id="TargetPanel.dir.windows" src="windowsDir.txt"/>
+    </resources>
+
+    <!-- Para poder crear accesos directos desde el escritorio en Windows-->
+    <native type="izpack" name="ShellLink.dll" />
+	<native type="izpack" name="ShellLink_x64.dll" />
+
+    <!-- 
+        Indicamos que paneles queremos para nuestro instalador. Se respeta el orden. Existen más (consultar ayuda)
+    -->
+    <panels>
+	<!-- Panel en el que se muestra el nombre de la aplicación, información de contacto, etc -->
+        <panel classname="HelloPanel"/>
+	<!-- En este panel podemos mostrar un archivo de texto con información general de la aplicación -->
+        <panel classname="InfoPanel"/>
+	<!-- Panel que pregunta al usuario si acepta o no las condiciones de la licencia -->
+        <panel classname="LicencePanel"/>
+	<!-- Con este panel, dejamos al usuario elegir donde se quiere instalar la aplicación -->
+        <panel classname="TargetPanel"/>
+	<!-- Este panel permite al usuario elegir que partes de la aplicación se van a instalar -->
+        <panel classname="PacksPanel"/>
+	<!-- Este panel permite al usuario ver el progreso de la instalación de la aplicación. -->
+        <panel classname="InstallPanel"/>
+	<!-- Pregunta al usuario que accesos directos desea crear-->
+        <panel classname="ShortcutPanel"/>
+	<!-- Este panel muestra una pantalla de despedida indicando que la instalación ha acabado con éxito -->
+        <panel classname="FinishPanel"/>
+    </panels>
+
+    <!-- 
+        En el elemento packs indicamos que archivos vamos a instalar y donde.
+	Los podemos organizar por grupos para que el usuario pueda seleccionar
+	si instalarlos o no. Incluso se puede decidir si un paquete se va a copiar
+	a un sistema operativo concreto o no (recordemos que los instaladores hechos
+	con IzPack son multiplataforma.
+    -->
+    <packs>
+	<!-- Archivos base de instalación, los marcamos como de obligatoria instalación -->
+        <pack name="Aplicación" required="yes">
+            <description>MessageLogger</description>
+            <file src="..\dist" targetdir="$INSTALL_PATH"/>
+            <file src="LicenciaES.txt" targetdir="$INSTALL_PATH"/>
+			<file src="LicenseEN.txt" targetdir="$INSTALL_PATH"/>
+        </pack>
+		<pack name="Sistema de ayuda" required="yes">
+            <description>Ayuda de la aplicación.</description>
+            <file src="..\help" targetdir="$INSTALL_PATH"/>
+        </pack>
+		<pack name="Informes" required="yes">
+            <description>Ayuda de la aplicación.</description>
+            <file src="..\informes" targetdir="$INSTALL_PATH"/>
+        </pack>
+		<pack name="Base de datos" required="yes">
+            <description>Ayuda de la aplicación.</description>
+            <file src="..\database" targetdir="$INSTALL_PATH"/>
+        </pack>
+    </packs>
+</installation>

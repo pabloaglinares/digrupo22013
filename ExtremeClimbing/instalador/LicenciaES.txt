@@ -1,0 +1,29 @@
+Esta es la Licencia de Extreme Climbing
+
+1. DEFINICIONES
+
+1.1 Usuario.
+El Usuario es el particular o la entidad comercial que descarga el SOFTWARE.
+
+2. CONCESIÓN DE LA LICENCIA
+
+2.1 Derechos y limitaciones de la concesión.
+NVIDIA concede al Usuario el derecho no exclusivo e intransferible de utilizar el SOFTWARE, teniendo en cuenta las limitaciones siguientes:
+
+2.1.1 Derechos.
+El Usuario podrá instalar o utilizar una copia del SOFTWARE en un solo ordenador, y no realizará ninguna copia del SOFTWARE, 
+salvo una copia de seguridad. La presente LICENCIA de SOFTWARE no podrá ser compartida ni utilizada al mismo tiempo en distintos ordenadores.
+
+2.1.2 Excepción de Linux/FreeBSD/OpenSolaris .
+Sin perjuicio de lo dispuesto en el punto 2.1.1, el SOFTWARE diseñado exclusivamente para ser utilizado en el sistema operativo 
+Linux/FreeBSD/OpenSolaris podrá ser copiado y redistribuido, siempre y cuando no se modifiquen en modo alguno los archivos binarios (salvo para descomprimirlos).
+
+2.1.3 Limitaciones.
+
+Queda prohibida la ingeniería inversa. El Usuario no podrá aplicar técnicas de ingeniería inversa, descompilar o desensamblar el 
+SOFTWARE, ni realizar cualquier otra operación que tienda a descubrir el código fuente.
+
+Queda prohibida la separación de los componentes. Se autoriza el uso del SOFTWARE como un producto único. Las partes que 
+lo componen no se podrán separar para utilizarlas en más de un ordenador, ni hacer uso de ellas por separado.
+
+Queda prohibido el arrendamiento. El Usuario no arrendará ni alquilará el SOFTWARE a otra persona.
